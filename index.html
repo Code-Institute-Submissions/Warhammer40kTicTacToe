@@ -10,110 +10,158 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
 		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
 	</script>
-    <link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
+	<link href="assets/css/style.css" type="text/css" rel="stylesheet">
 </head>
 
 <body class="container-fluid">
 
 	<!--Header-->
 
-	<header>
+	<div class="container-fluid text-center">
 		<img src="#" alt="Warhammer 40k Logo">
-		<h2>
+		<h3>
 			Tic Tac Toe
-		</h2>
-	</header>
+		</h3>
+	</div>
 
 	<!--/header-->
 
-	<!--Faction Select & New Game-->
+	<!-- Information Line -->
 
-    <div class="container">
-	<ul class="nav flex-column">	<!--Add data-toggle="collapse" and role="button" through JS for collapse functionality-->
+	<div class="container-fluid text-center">
 
-		<li class="nav-item">
-            <img src="#" alt="aalogo">
-			<p>Adeptus Astartes</p>
-            <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false"></button>
-		</li>
-		<li class="nav-item">
-            <img src="#" alt="chaoslogo">
-			<p>Chaos</p>
-			<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false"></button>
-		</li>
-		<li class="nav-item">
-			<img src="#" alt="eldarlogo">
-			<p>Aeldari</p>
-            <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false"></button>
-		</li>
-		<li class="nav-item">
-			<img src="#" alt="necronslogo">
-			<p>Necrons</p>
-            <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false"></button>
-		</li>
-		<li class="nav-item">
-			<img src="#" alt="taulogo">
-			<p>T'au Empire</p>
-            <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false"></button>
-		</li>
-			
-	</ul>
-
-    <button type="button" class="btn btn-success">Start A New Game</button>
-    </div>
-
-	<!--/faction select & new game-->
-
-	<!--Game Board-->
-
-	<div class="table-responsive">
-
-		<table class="table">
-
-			<tbody>
-
-				<tr>
-					<td>0</td>
-					<td>1</td>
-					<td>2</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>4</td>
-					<td>5</td>
-				</tr>
-				<tr>
-					<td>6</td>
-					<td>7</td>
-					<td>8</td>
-				</tr>
-			</tbody>
-
-		</table>
-
+		<h4 id="info">
+			Player 1 Is Next
+		</h4>
 	</div>
+	<!-- /information line -->
 
-	<!--/game board-->
+	<br>
 
-	<!--Reset-->
+	<div class="container-fluid">
+		
 
-	<button type="button" class="btn btn-danger">Reset</button>
+			<!--Faction Select & New Game-->
 
-	<!--/reset-->
+			<div class="col-3 faction">
 
-	<!--Footer-->
 
-	<footer class="container">
+				<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+					<button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <a class="navbar-brand" href="#">Select Your Faction:</a><span class="navbar-toggler-icon" display="hidden"></span>
+                    </button>
+				      
+						<div class="collapse navbar-collapse" id="navbarNav">
+							<ul class="navbar-nav">
+								<li id="aa" class="nav-item">
+									<a class="nav-link" href="#"><button type="button" class="btn btn-primary select" data-toggle="button" aria-pressed="false"><img src="#" alt="aalogo">Adeptus Astartes</button></a>
+								</li>
+								<li id="cha" class="nav-item">
+									<a class="nav-link" href="#"><button type="button" class="btn btn-primary select" data-toggle="button" aria-pressed="false"><img src="#" alt="chaoslogo">Chaos</button></a>
+								</li>
+								<li id="eld" class="nav-item">
+									<a class="nav-link" href="#"><button type="button" class="btn btn-primary select" data-toggle="button" aria-pressed="false"><img src="#" alt="eldarlogo">Aeldari</button></a>
+								</li>
+                                <li id="nec" class="nav-item">
+									<a class="nav-link" href="#"><button type="button"  class="btn btn-primary select" data-toggle="button" aria-pressed="false"><img src="#" alt="necronslogo">Necrons</button></a>
+								</li>
+                                <li id="tau" class="nav-item">
+									<a class="nav-link" href="#"><button type="button"  class="btn btn-primary select" data-toggle="button" aria-pressed="false"><img src="#" alt="taulogo">T'au Empire</button></a>
+								</li>
+                                <li class="nav-item">
+									<a class="nav-link" href="#"><button type="button" class="btn btn-success newgame">Start A New Game</button></a>
+								</li>
+							</ul>
+						</div>
+				</nav>
+			</div>
+				<!--/faction select & new game-->
 
-		<p>The Warhammer 40,000 logo and all faction names and logos &#169; &#174; Games Workshop Ltd. and are used
-			under Fair Use.</p>
+				<!--Game Board-->
 
-		<p>App written and designed by Nikolas Kotsikos &#169;2020</p>
+				<div class="col-6  gameboard">
 
-	</footer>
 
-	<!--/footer-->
-    
+					<table>
+
+						<tr>
+							<td data-box-index="0">
+								<button class="box0 box"></button>
+							</td>
+							<td data-box-index="1">
+								<button class="box1 box"></button>
+							</td>
+							<td data-box-index="2">
+								<button class="box2 box"></button>
+							</td>
+						</tr>
+						<tr>
+							<td data-box-index="3">
+								<button class="box3 box"></button>
+							</td>
+							<td data-box-index="4">
+								<button class="box4 box"></button>
+							</td>
+							<td data-box-index="5">
+								<button class="box5 box"></button>
+							</td>
+						</tr>
+						<tr>
+							<td data-box-index="6">
+								<button class="box6 box"></button>
+							</td>
+							<td data-box-index="7">
+								<button class="box7 box"></button>
+							</td>
+							<td data-box-index="8">
+								<button class="box8 box"></button>
+							</td>
+						</tr>
+					</table>
+					<br>
+					<br>
+
+
+
+            </div>
+
+		    <!--/game board-->
+
+					<div class="col-3">
+
+
+					</div>
+
+
+				</div>
+
+			
+
+
+
+			<!--Reset-->
+
+			<input type="button"
+                           class="reset btn btn-lg btn-danger btn-block"
+                           value="Reset" onClick="reset()" />
+
+			<!--/reset-->
+
+			<!--Footer-->
+
+			<div class="container-fluid text-center">
+
+				<p>The Warhammer 40,000 logo and all faction names and logos &#169; &#174; Games Workshop Ltd. and are
+					used
+					under Fair Use.</p>
+
+				<p>App written and designed by Nikolas Kotsikos &#169;2020</p>
+
+			</div>
+
+			<!--/footer-->
+
 </body>
 
 </html>
