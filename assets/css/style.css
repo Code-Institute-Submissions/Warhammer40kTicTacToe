@@ -1,39 +1,60 @@
- body { 
-        background-color: #3b47bb; 
-    } 
-  
-    .box { 
-        height: 100px;         
-        width: 100px; 
-        background-color: white; 
-        border: 0px transparent; 
-        margin: 10px; 
-        padding: 10px; 
-    } 
-    
-    .gameboard {
-        margin: 0 auto;
-    }
+body {
+  background-color: #3b47bb;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
 
-    .select {
-        width: 250px;
-        background-color: transparent;
-        border: 0;
-    }
+.head {
+  height: 6em;
+}
 
-    .gameboard {
-        margin: 0 auto;
-    }
-    
-    table {
-        margin: 0 auto;
-    }
-    .reset { 
-        max-width: 320px;
-        padding: 10px; 
-        margin: 0 auto;
-    } 
-  
-    .reset:hover { 
-        opacity: 0.8; 
-    } 
+.box {
+  height: 100px;
+  width: 100px;
+  background-color: white;
+  border: 0px transparent;
+  margin: 10px;
+  padding: 10px;
+}
+
+.gameboard {
+  margin: 0 auto;
+}
+
+.select {
+  width: 250px;
+  background-color: transparent;
+  border: 0;
+}
+
+.gameboard {
+  margin: 0 auto;
+}
+
+table {
+  margin: 0 auto;
+}
+.reset {
+  max-width: 350px;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.reset:hover {
+  opacity: 0.8;
+}
+
+.footer {
+  margin: 0;
+  margin-top: 3em;
+  padding: 0;
+  border: 0;
+  position: fixed;
+}
+
+@media screen and (min-width: 900px) {
+  .main {
+    display: flex;
+  }
+}
