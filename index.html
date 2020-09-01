@@ -19,7 +19,7 @@
 	<!--Header-->
 
 	<div class="container-fluid head text-center">
-		<img src="#" alt="Warhammer 40k Logo">
+		<img src="assets/images/40klogo.png" alt="Warhammer 40k Logo">
 		<h3>
 			Tic Tac Toe
 		</h3>
@@ -31,125 +31,108 @@
 
 	<div class="container-fluid text-center">
 
-		<h4 id="info">
+		<h5 id="info">
 			Player 1 Is Next
-		</h4>
+		</h5>
 	</div>
 	<!-- /information line -->
 
 	<br>
 
 	<div class="container-fluid main text-center">
-		
-
-			<!--Faction Select & New Game-->
-
-			<div class="col-3 faction">
 
 
-			
-							<ul class="navbar-nav text-center">
+		<!--Faction Select & New Game-->
 
-                                <li  class="nav-item">
-									<h5 class="factiontext">Select Your Faction:</h5>
-								</li>
-
-								<li class="nav-item aa">
-									<a class="nav-link" href="#"><button type="button" class="btn btn-primary select" data-toggle="button" aria-pressed="false"><img src="#" alt="aalogo">Adeptus Astartes</button></a>
-								</li>
-
-								<li class="nav-item cha">
-									<a class="nav-link" href="#"><button type="button" class="btn btn-primary select" data-toggle="button" aria-pressed="false"><img src="#" alt="chaoslogo">Chaos</button></a>
-								</li>
-
-								<li class="nav-item eld">
-									<a class="nav-link" href="#"><button type="button" class="btn btn-primary select" data-toggle="button" aria-pressed="false"><img src="#" alt="eldarlogo">Aeldari</button></a>
-								</li>
-
-                                <li class="nav-item nec">
-									<a class="nav-link" href="#"><button type="button"  class="btn btn-primary select" data-toggle="button" aria-pressed="false"><img src="#" alt="necronslogo">Necrons</button></a>
-								</li>
-
-                                <li class="nav-item tau">
-									<a class="nav-link" href="#"><button type="button"  class="btn btn-primary select" data-toggle="button" aria-pressed="false"><img src="#" alt="taulogo">T'au Empire</button></a>
-								</li>
-
-                                <li class="nav-item ng">
-									<a class="nav-link" href="#"><input type="button" class="btn btn-success newgame" value="Start A New Game" onClick="newgame()" /></a>
-								</li>
-							</ul>
-						
-				
-			</div>
-				<!--/faction select & new game-->
-
-				<!--Game Board-->
-
-				<div class="col-6 gameboard">
-
-
-					<table>
-
-						<tr>
-							<td data-position="0">
-								<button class="box0 box"></button>
-							</td>
-							<td data-position="1">
-								<button class="box1 box"></button>
-							</td>
-							<td data-position="2">
-								<button class="box2 box"></button>
-							</td>
-						</tr>
-						<tr>
-							<td data-position="3">
-								<button class="box3 box"></button>
-							</td>
-							<td data-position="4">
-								<button class="box4 box"></button>
-							</td>
-							<td data-position="5">
-								<button class="box5 box"></button>
-							</td>
-						</tr>
-						<tr>
-							<td data-position="6">
-								<button class="box6 box"></button>
-							</td>
-							<td data-position="7">
-								<button class="box7 box"></button>
-							</td>
-							<td data-position="8">
-								<button class="box8 box"></button>
-							</td>
-						</tr>
-					</table>
-					<br>
-					<br>
+		<div class="col-3 faction align-center">
 
 
 
-            </div>
+			<ul class="navbar-nav text-center">
 
-		    <!--/game board-->
+				<li class="nav-header">
+					<h5 class="factiontext">Select Your Faction:</h5>
+				</li>
 
-					<div class="col-3">
-                        <div class="container-fluid scorecount text-center">
-                            <p>
-                            Won:
-                            </p><span class="score">0</span>
-                        </div>
+				<li class="nav-item aa">
+					<a class="nav-link"
+						href="#"><button type="button" class="btn btn-primary select" data-toggle="button" aria-pressed="false"><img src="assets/images/aalogo.png" alt="aalogo"><h6>Adeptus Astartes</h6></button></a>
+				</li>
 
-					</div>
+				<li class="nav-item cha">
+					<a class="nav-link"
+						href="#"><button type="button" class="btn btn-primary select" data-toggle="button" aria-pressed="false"><img src="assets/images/chaoslogo.png" alt="chaoslogo"><h6>Chaos</h6></button></a>
+				</li>
+
+				<li class="nav-item eld">
+					<a class="nav-link"
+						href="#"><button type="button" class="btn btn-primary select" data-toggle="button" aria-pressed="false"><img src="assets/images/eldarlogo.png" alt="eldarlogo"><h6>Aeldari</h6></button></a>
+				</li>
+
+				<li class="nav-item nec">
+					<a class="nav-link"
+						href="#"><button type="button"  class="btn btn-primary select" data-toggle="button" aria-pressed="false"><img src="assets/images/necronslogo.png" alt="necronslogo"><h6>Necrons</h6></button></a>
+				</li>
+
+				<li class="nav-item tau">
+					<a class="nav-link"
+						href="#"><button type="button"  class="btn btn-primary select" data-toggle="button" aria-pressed="false"><img src="assets/images/taulogo.png" alt="taulogo"><h6>T'au Empire</h6></button></a>
+				</li>
+
+				<li class="nav-item ng">
+					<a class="nav-link"
+						href="#"><input type="button" class="btn btn-success newgame" value="Start A New Game" onClick="newgame()" /></a>
+				</li>
+			</ul>
 
 
-				</div>
+		</div>
+		<!--/faction select & new game-->
 
-			
+		<!--Game Board-->
+
+		<div class="col-6 gameboard">
 
 
+			<table>
 
-			<!--Reset-->
+				<tr>
+					<td data-position="0">
+						<button class="box0 box"></button>
+					</td>
+					<td data-position="1">
+						<button class="box1 box"></button>
+					</td>
+					<td data-position="2">
+						<button class="box2 box"></button>
+					</td>
+				</tr>
+				<tr>
+					<td data-position="3">
+						<button class="box3 box"></button>
+					</td>
+					<td data-position="4">
+						<button class="box4 box"></button>
+					</td>
+					<td data-position="5">
+						<button class="box5 box"></button>
+					</td>
+				</tr>
+				<tr>
+					<td data-position="6">
+						<button class="box6 box"></button>
+					</td>
+					<td data-position="7">
+						<button class="box7 box"></button>
+					</td>
+					<td data-position="8">
+						<button class="box8 box"></button>
+					</td>
+				</tr>
+			</table>
+			<br>
+			<br>
+            <!--Reset-->
 
 			<input type="button"
                            class="reset btn btn-lg btn-danger btn-block"
@@ -157,18 +140,41 @@
 
 			<!--/reset-->
 
-			<!--Footer-->
 
-			<div class="container-fluid footer text-center">
+            </div>
 
-				<span class="fnotes">The Warhammer 40,000 logo and all faction names and logos &#169; &#174; Games Workshop Ltd. and are
-					used under the Fair Use Agreement.</span>
-                <br>
-				<span class="fnotes">App written and designed by Nikolas Kotsikos &#169;2020</span>
+			<!--/game board-->
+
+			<div class="col-3">
+				<div class="container-fluid scorecount text-center">
+					<p class="wins">
+						Won:
+					</p><span class="score">0</span>
+				</div>
 
 			</div>
+			
 
-			<!--/footer-->
+		</div>
+
+
+
+
+
+
+
+		<!--Footer-->
+
+		<div class="container-fluid footer text-center">
+
+			<span class="fnotes">The Warhammer 40,000 logo and all faction names and logos &#169; &#174; Games Workshop Ltd. and are
+					used under the Fair Use Agreement.</span>
+			<br>
+			<span class="fnotes">App written and designed by Nikolas Kotsikos &#169;2020</span>
+
+		</div>
+
+		<!--/footer-->
 
 </body>
 

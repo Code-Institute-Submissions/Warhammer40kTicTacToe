@@ -1,3 +1,16 @@
+/*--------------------------Fonts*/
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500&display=swap");
+
+h3, 
+h5, 
+h6,
+.score,
+.wins {
+    font-family: 'Cormorant SC', sans-serif;
+    color: #fafafa;
+}
+
+/*--------------------------Body*/
 body {
   background-color: #3b47bb;
   padding: 0;
@@ -5,10 +18,32 @@ body {
   border: 0;
 }
 
+/*--------------------------Header*/
 .head {
   height: 6em;
 }
 
+h3 {
+    font-size: 30px;
+}
+
+/*--------------------------Info Line*/
+#info {
+  margin-top: 50px;
+}
+
+h5 {
+    font-size: 20px;
+}
+
+/*--------------------------Main Container*/
+.main {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/*--------------------------Game Board*/
 .box {
   height: 100px;
   width: 100px;
@@ -20,21 +55,42 @@ body {
 
 .gameboard {
   margin: 0 auto;
+  margin-top: 5vh;
 }
 
+table {
+  margin: 0 auto;
+}
+
+/*--------------------------Faction Select*/
 .select {
   width: 250px;
   background-color: transparent;
   border: 0;
 }
 
-.gameboard {
+ul {
   margin: 0 auto;
 }
 
-table {
-  margin: 0 auto;
+ul li a {
+  font-size: 30px;
 }
+
+ul li img {
+  height: 40px;
+  width: 40px;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+ul li h6 {
+    margin: 0;
+    margin-top: 8px;
+}
+
+/*--------------------------Reset*/
 .reset {
   max-width: 350px;
   padding: 10px;
@@ -45,14 +101,22 @@ table {
   opacity: 0.8;
 }
 
+/*--------------------------Wins*/
+.wins,
+.score {
+    font-size: 35px;
+}
+
+/*--------------------------Footer*/
 .footer {
   margin: 0;
   margin-top: 3em;
   padding: 0;
   border: 0;
-  position: fixed;
+  color: #fafafa;
 }
 
+/*--------------------------Media Queries*/
 @media screen and (min-width: 900px) {
   .main {
     display: flex;
