@@ -53,7 +53,7 @@ h5 {
   padding: 10px;
 }
 
-.gameboard {
+.board {
   margin: 0 auto;
   margin-top: 5vh;
 }
@@ -90,8 +90,13 @@ ul li h6 {
     margin-top: 8px;
 }
 
+/*--------------------------Active*/
+.active {
+    background-color: black;
+}
+
 /*--------------------------Reset*/
-.reset {
+#reset {
   max-width: 350px;
   padding: 10px;
   margin: 0 auto;
