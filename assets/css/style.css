@@ -1,18 +1,23 @@
 /*--------------------------Fonts*/
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500&display=swap");
 
-h3, 
-h5, 
+h3,
+h5,
 h6,
-.score,
+#score,
 .wins {
-    font-family: 'Cormorant SC', sans-serif;
-    color: #fafafa;
+  font-family: "Cormorant SC", sans-serif;
+  color: #fafafa;
+}
+
+.factiontext,
+.fname {
+  color: black;
 }
 
 /*--------------------------Body*/
 body {
-  background-color: #3b47bb;
+  background-color: #b7b8c5;
   padding: 0;
   margin: 0;
   border: 0;
@@ -24,7 +29,7 @@ body {
 }
 
 h3 {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 /*--------------------------Info Line*/
@@ -33,14 +38,14 @@ h3 {
 }
 
 h5 {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 /*--------------------------Main Container*/
 .main {
-    margin: 0;
-    padding: 0;
-    border: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
 /*--------------------------Game Board*/
@@ -69,6 +74,12 @@ table {
   border: 0;
 }
 
+.navbar-nav {
+  background-color: #fafafa;
+  width: 250px;
+  height: inherit;
+}
+
 ul {
   margin: 0 auto;
 }
@@ -86,13 +97,13 @@ ul li img {
 }
 
 ul li h6 {
-    margin: 0;
-    margin-top: 8px;
+  margin: 0;
+  margin-top: 8px;
 }
 
 /*--------------------------Active*/
 .active {
-    background-color: black;
+  background-color: red;
 }
 
 /*--------------------------Reset*/
@@ -106,10 +117,19 @@ ul li h6 {
   opacity: 0.8;
 }
 
+/*------------------------Players*/
+.Player1 {
+    background-image: url('assets/images/aalogo.png')
+}
+
+.Player2 {
+    background-image: url('assets/images/chalogo.png')
+}
+
 /*--------------------------Wins*/
 .wins,
-.score {
-    font-size: 35px;
+#score {
+  font-size: 35px;
 }
 
 /*--------------------------Footer*/
