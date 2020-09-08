@@ -17,7 +17,7 @@ h6,
 
 /*--------------------------Body*/
 body {
-  background-color: #b7b8c5;
+  background-color: #75757c;
   padding: 0;
   margin: 0;
   border: 0;
@@ -69,26 +69,28 @@ table {
 
 /*--------------------------Faction Select*/
 .select {
-  width: 250px;
+  width: 200px;
   background-color: transparent;
   border: 0;
 }
 
+.nav-header {
+    padding-top: 5vh;
+}
+
 .navbar-nav {
   background-color: #fafafa;
-  width: 250px;
-  height: inherit;
-}
-
-ul {
+  width: 350px;
+  height: 580px;
   margin: 0 auto;
+  margin-top: 20px;
 }
 
-ul li a {
+.navbar-nav li a {
   font-size: 30px;
 }
 
-ul li img {
+.navbar-nav li img {
   height: 40px;
   width: 40px;
   margin: 0;
@@ -96,16 +98,44 @@ ul li img {
   padding: 0;
 }
 
-ul li h6 {
+.navbar-nav li h6 {
   margin: 0;
   margin-top: 8px;
 }
 
-/*--------------------------Active*/
-.active {
-  background-color: red;
+#aa, #cha, #eld, #nec, #tau,
+#aa::before, #cha::before, #eld::before, #nec::before, #tau::before,
+#aa::after, #cha::after, #eld::after, #nec::after, #tau::after {
+    border: 0;
+    margin: 0;
+    padding: 0;
 }
 
+#aa:hover {
+    background-color: blue;
+}
+
+#cha:hover {
+    background-color: red;
+
+}
+
+#eld:hover {
+    background-color: green;
+}
+
+#nec:hover {
+    background-color: silver;
+}
+
+#tau:hover {
+    background-color: orange;
+}
+
+.newgame {
+    width: 200px;
+    background-color: greenyellow;
+}
 /*--------------------------Reset*/
 #reset {
   max-width: 350px;
@@ -117,13 +147,25 @@ ul li h6 {
   opacity: 0.8;
 }
 
-/*------------------------Players*/
-.Player1 {
-    background-image: url('assets/images/aalogo.png')
+/*------------------------Factions*/
+.aa {
+    background-image: url('assets/images/aalogo.png');
 }
 
-.Player2 {
-    background-image: url('assets/images/chalogo.png')
+.cha {
+    background-image: url('assets/images/chalogo.png');
+}
+
+.eld {
+    background-image: url('assets/images/eldarlogo.png');
+}
+
+.nec {
+    background-image: url('assets/images/necronslogo.png');
+}
+
+.tau {
+    background-image: url('assets/images/taulogo.png');
 }
 
 /*--------------------------Wins*/

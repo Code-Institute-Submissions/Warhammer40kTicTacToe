@@ -1,38 +1,72 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const box = document.querySelectorAll("#board .box")
-  const selectBtn = document.querySelector('.select')
-  const turnDisplay = document.querySelector("#info")
+let playerIcon = $();
+let cpuIcon = $();
+const box = document.querySelectorAll("#board .box");
+const turnDisplay = document.querySelector("#info");
+let turnCount = 0;
 
-  let currentPlayer = "Player 1"
-  
-  selectBtn.forEach(button) => {
-      selectBtn.addEventListener("click", selectResult)
-  }
+let currentPlayer = "Player 1";
 
-  function selectResult(e) {
-      const selectArray = Array.from(selectBtn)
-      const selectIndex = selectArray.indexOf(e.target)
+$("#aa").on("click", function () {
+  $("li .select", !this).css("background-color", "#fafafa");
+  $(this).css("background-color", "blue").attr("aria-pressed", true);
+  $("body").css("background-color", "blue");
+  $(".newgame").css("background-color", "green");
+  playerIcon.addClass(".aa");
+});
 
-      if() {
+$("#cha").on("click", function () {
+  $("li .select", !this).css("background-color", "#fafafa");
+  $(this).css("background-color", "red").attr("aria-pressed", true);
+  $("body").css("background-color", "red");
+  $(".newgame").css("background-color", "green");
+  playerIcon.addClass(".cha");
+});
 
-      }
-  }
+$("#eld").on("click", function () {
+  $("li .select", !this).css("background-color", "#fafafa");
+  $(this).css("background-color", "green").attr("aria-pressed", true);
+  $("body").css("background-color", "green");
+  $(".newgame").css("background-color", "green");
+  playerIcon.addClass(".eld");
+});
 
-  box.forEach((box) => {
-  box.addEventListener("click", clickResult)
-})
+$("#nec").on("click", function () {
+  $("li .select", !this).css("background-color", "#fafafa");
+  $(this).css("background-color", "silver").attr("aria-pressed", true);
+  $("body").css("background-color", "silver");
+  $(".newgame").css("background-color", "green");
+  playerIcon.addClass(".nec");
+});
+
+$("#tau").on("click", function () {
+  $("li .select", !this).css("background-color", "#fafafa");
+  $(this).css("background-color", "orange").attr("aria-pressed", true);
+  $("body").css("background-color", "orange");
+  $(".newgame").css("background-color", "green");
+  playerIcon.addClass(".tau");
+});
+
+$(".ng").on("click", startGame);
+
+function startGame() {
+  $("#board input").removeClass(".playerIcon", ".cpuIcon");
+}
+
+box.forEach((box) => {
+  box.addEventListener("click", clickResult);
+});
 
 function clickResult(e) {
   const boxArray = Array.from(box);
-  const index = boxArray.indexOf(e.target)
-  turnDisplay.innerHTML = currentPlayer + "Plays Next"
+  const index = boxArray.indexOf(e.target);
+  turnDisplay.innerHTML = currentPlayer + " Plays Next";
+  turnCount = turnCount + 1 < 9;
 
-  if(currentPlayer === "Player 1") {
-      box[index].classList.add("Player1")
-      currentPlayer = "Player 2"
+  if (currentPlayer === "Player 1") {
+    box[index].innerHTML = playerIcon;
+    currentPlayer = "Player 2";
   } else {
-      box[index].classList.add("Player2")
-      currentPlayer = "Player 1"
+    box[index].innerHTML = cpuIcon;
+    currentPlayer = "Player 1";
   }
-}
 }
