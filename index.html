@@ -39,7 +39,7 @@
 
     <div class="container-fluid text-center">
       <h5 id="info">
-       Select A Faction And Press Start Game  
+       Select A Faction And Press Start A New Game  
     </h5>
     </div>
     <!-- /information line -->
@@ -65,7 +65,7 @@
                 aria-pressed="false"
                 autocomplete="off"
               >
-                <img src="assets/images/aalogo.png" alt="aalogo" />
+                <img src="assets/images/aalogo.png" alt="adeptus_astartes_logo" />
                 <h6 class="fname">Adeptus Astartes</h6>
               </button></a
             >
@@ -81,7 +81,7 @@
                 aria-pressed="false"
                 autocomplete="off"
               >
-                <img src="assets/images/chaoslogo.png" alt="chaoslogo" />
+                <img src="assets/images/chaoslogo.png" alt="chaos_logo" />
                 <h6 class="fname">Chaos</h6>
               </button></a>
           </li>
@@ -96,7 +96,7 @@
                 aria-pressed="false"
                 autocomplete="off"
               >
-                <img src="assets/images/eldarlogo.png" alt="eldarlogo" />
+                <img src="assets/images/eldarlogo.png" alt="eldar_logo" />
                 <h6 class="fname">Aeldari</h6>
               </button></a
             >
@@ -112,7 +112,7 @@
                 aria-pressed="false"
                 autocomplete="off"
               >
-                <img src="assets/images/necronslogo.png" alt="necronslogo" />
+                <img src="assets/images/necronslogo.png" alt="necrons_logo" />
                 <h6 class="fname">Necrons</h6>
               </button></a
             >
@@ -128,7 +128,7 @@
                 aria-pressed="false"
                 autocomplete="off"
               >
-                <img src="assets/images/taulogo.png" alt="taulogo" />
+                <img src="assets/images/taulogo.png" alt="tau_empire_logo" />
                 <h6 class="fname">T'au Empire</h6>
               </button></a
             >
@@ -152,35 +152,36 @@
         <table>
           <tr>
             <td>
-              <input type="button" id="box0" class="box" data-box />
+                <div id="box0" class="box free" data-box></div>
             </td>
             <td>
-             <input type="button" id="box1" class="box" data-box />
+                <div id="box1" class="box free" data-box></div>
             </td>
             <td>
-              <input type="button" id="box2" class="box" data-box />
+                 <div id="box2" class="box free" data-box></div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+                 <div id="box3" class="box free" data-box></div>                
+            </td>
+            <td>
+                <div id="box4" class="box free" data-box></div> 
+            </td>
+            <td>
+                <div id="box5" class="box free" data-box></div>
             </td>
           </tr>
           <tr>
             <td>
-              <input type="button" id="box3" class="box" data-box />
+                 <div id="box6" class="box free" data-box></div>
             </td>
             <td>
-              <input type="button" id="box4" class="box" data-box />
+                <div id="box7" class="box free" data-box></div>
             </td>
             <td>
-              <input type="button" id="box5" class="box" data-box />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input type="button" id="box6" class="box" data-box />
-            </td>
-            <td>
-             <input type="button" id="box7" class="box" data-box />
-            </td>
-            <td>
-              <input type="button" id="box8" class="box" data-box />
+                <div id="box8" class="box free" data-box></div>
             </td>
           </tr>
         </table>
@@ -190,9 +191,9 @@
 
         <input
           type="button"
-          id="reset"
+          id="restart"
           class="btn btn-lg btn-danger btn-block"
-          value="Reset"          
+          value="Restart"          
         />
 
         <!--/reset-->
