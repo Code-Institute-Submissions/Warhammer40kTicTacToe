@@ -7,17 +7,21 @@ var turnCount = 0;
 var turnValid = false;
 
 $("#aa").on("click", function () {
-  $("li .select", !this).css("background-color", "#fafafa");
+  $(!this).css({
+      "background-color": "#fafafa", 
+      "cursor": "not-allowed"});
   $(this).css("background-color", "blue").attr("aria-pressed", true);
   $("body").css("background-color", "blue");
   $(".newgame").addClass("ready");
    $(".newgame").css("background-color", "green");
    $(".newgame:hover").css("background-color", "green");
   playerIcon.addClass("aa")
-});
+  });
 
 $("#cha").on("click", function () {
-  $("li .select", !this).css("background-color", "#fafafa");
+  $(!this).css({
+      "background-color": "#fafafa", 
+      "cursor": "not-allowed"});
   $(this).css("background-color", "red").attr("aria-pressed", true);
   $("body").css("background-color", "red");
   $(".newgame").addClass("ready");
@@ -27,7 +31,9 @@ $("#cha").on("click", function () {
 });
 
 $("#eld").on("click", function () {
-  $("li .select", !this).css("background-color", "#fafafa");
+  $(!this).css({
+  "background-color": "#fafafa", 
+  "cursor": "not-allowed"});
   $(this).css("background-color", "green").attr("aria-pressed", true);
   $("body").css("background-color", "green");
   $(".newgame").addClass("ready");
@@ -37,7 +43,9 @@ $("#eld").on("click", function () {
 });
 
 $("#nec").on("click", function () {
-  $("li .select", !this).css("background-color", "#fafafa");
+  $(!this).css({
+  "background-color": "#fafafa", 
+  "cursor": "not-allowed"});
   $(this).css("background-color", "silver").attr("aria-pressed", true);
   $("body").css("background-color", "silver");
   $(".newgame").addClass("ready");
@@ -47,7 +55,9 @@ $("#nec").on("click", function () {
 });
 
 $("#tau").on("click", function () {
-  $("li .select", !this).css("background-color", "#fafafa");
+  $("li .select").css({
+  "background-color": "#fafafa", 
+  "cursor": "not-allowed"});
   $(this).css("background-color", "orange").attr("aria-pressed", true);
   $("body").css("background-color", "orange");
   $(".newgame").addClass("ready");
@@ -76,14 +86,14 @@ function validateTurn(boxplayed) {
 	}
 };
   
-$(".box").on("click", function () { 
+$(".box").on("click", function (e) { 
     if(turnCount == 1, $(".newgame").hasClass("ready")) { 
     $("#info").text("Player 2 Plays Next"); 
-    $(this).prepend(playerIcon);  
+    $(e.target).html(playerIcon);  
     turnCount = 2;             
     } else {     
         $("#info").text("Player 1 Plays Next"); 
-        $(this).prepend(cpuIcon);  
+        $(this).html(cpuIcon);  
         turnCount = 1; 
     } 
 }); 

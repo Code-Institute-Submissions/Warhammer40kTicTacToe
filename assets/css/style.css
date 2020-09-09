@@ -10,9 +10,26 @@ h6,
   color: #fafafa;
 }
 
+h3 {
+  font-size: 30px;
+}
+
+h5 {
+  font-size: 20px;
+}
+
 .factiontext,
 .fname {
   color: black;
+}
+
+.navbar-nav li a {
+  font-size: 30px;
+}
+
+.wins,
+#score {
+  font-size: 35px;
 }
 
 /*--------------------------Body*/
@@ -28,18 +45,12 @@ body {
   height: 6em;
 }
 
-h3 {
-  font-size: 30px;
-}
 
 /*--------------------------Info Line*/
 #info {
   margin-top: 50px;
 }
 
-h5 {
-  font-size: 20px;
-}
 
 /*--------------------------Main Container*/
 .main {
@@ -54,8 +65,8 @@ h5 {
   width: 100px;
   background-color: white;
   border: 0px transparent;
-  margin: 10px;
-  padding: 10px;
+  margin: 20px;
+  padding: 20px;
 }
 
 .board {
@@ -65,6 +76,7 @@ h5 {
 
 table {
   margin: 0 auto;
+  display: table;
 }
 
 /*--------------------------Faction Select*/
@@ -86,9 +98,7 @@ table {
   margin-top: 20px;
 }
 
-.navbar-nav li a {
-  font-size: 30px;
-}
+
 
 .navbar-nav li img {
   height: 40px;
@@ -134,16 +144,21 @@ table {
 
 .newgame {
     width: 200px;
-    background-color: greenyellow;
+    background-color: grey;
 }
-/*--------------------------Reset*/
-#reset {
+
+.newgame:hover {
+    background-color: grey;
+}
+
+/*--------------------------Restart*/
+#restart {
   max-width: 350px;
   padding: 10px;
   margin: 0 auto;
 }
 
-.reset:hover {
+.restart:hover {
   opacity: 0.8;
 }
 
@@ -153,7 +168,7 @@ table {
 }
 
 .cha {
-    background-image: url('assets/images/chalogo.png');
+    background-image: url('assets/images/chaoslogo.png');
 }
 
 .eld {
@@ -168,10 +183,12 @@ table {
     background-image: url('assets/images/taulogo.png');
 }
 
-/*--------------------------Wins*/
-.wins,
-#score {
-  font-size: 35px;
+.aa, .cha, .eld, .nec, .tau {
+  height: 50px;
+  width: 50px;
+  margin: 0;
+  border: 0;
+  padding: 0;
 }
 
 /*--------------------------Footer*/
