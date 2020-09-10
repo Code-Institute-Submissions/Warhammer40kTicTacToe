@@ -1,70 +1,75 @@
 
 $(document).ready(function() {
 
-var playerIcon = $();
-var cpuIcon = $();
+var playerIcon = factionSelect(icon);
+var icon;
+var cpuIcon = cpuSelect();
 var turnCount = 0;
 var turnValid = false;
 
-$("#aa").on("click", function () {
-  $(!this).css({
-      "background-color": "#fafafa", 
-      "cursor": "not-allowed"});
-  $(this).css("background-color", "blue").attr("aria-pressed", true);
+function factionSelect() {
+  
+
+  $("#aa").on("click", function (e) {
+  $(".select:not(#aa)").attr("disabled", true);
+    $(e.target).css("background-color", "blue").attr("aria-pressed", true);
   $("body").css("background-color", "blue");
   $(".newgame").addClass("ready");
    $(".newgame").css("background-color", "green");
    $(".newgame:hover").css("background-color", "green");
-  playerIcon.addClass("aa")
+  icon = "<img src='assets/images/aalogo.png' alt='adeptus_astartes_logo' />";
+
+  return icon;
   });
 
-$("#cha").on("click", function () {
-  $(!this).css({
-      "background-color": "#fafafa", 
-      "cursor": "not-allowed"});
-  $(this).css("background-color", "red").attr("aria-pressed", true);
+$("#cha").on("click", function (e) {
+  $(e.target).css("background-color", "red").attr("aria-pressed", true);
+  $(".select:not(#cha)").attr("disabled", true);
   $("body").css("background-color", "red");
   $(".newgame").addClass("ready");
    $(".newgame").css("background-color", "green");
    $(".newgame:hover").css("background-color", "green");
-  playerIcon.addClass("cha");  
+   icon = '<img src="assets/images/aalogo.png" alt="adeptus_astartes_logo" />';
+   
+   return icon;
 });
 
-$("#eld").on("click", function () {
-  $(!this).css({
-  "background-color": "#fafafa", 
-  "cursor": "not-allowed"});
-  $(this).css("background-color", "green").attr("aria-pressed", true);
+$("#eld").on("click", function (e) {
+  $(e.target).css("background-color", "green").attr("aria-pressed", true);
+   $(".select:not(#eld)").attr("disabled", true);
   $("body").css("background-color", "green");
   $(".newgame").addClass("ready");
   $(".newgame").css("background-color", "green");
   $(".newgame:hover").css("background-color", "green");
-  playerIcon.addClass("eld");
+  icon = '<img src="assets/images/aalogo.png" alt="adeptus_astartes_logo" />';
+  
+  return icon;
 });
 
-$("#nec").on("click", function () {
-  $(!this).css({
-  "background-color": "#fafafa", 
-  "cursor": "not-allowed"});
-  $(this).css("background-color", "silver").attr("aria-pressed", true);
+$("#nec").on("click", function (e) {
+  $(e.target).css("background-color", "silver").attr("aria-pressed", true);
+  $(".select:not(#nec)").attr("disabled", true);
   $("body").css("background-color", "silver");
   $(".newgame").addClass("ready");
    $(".newgame").css("background-color", "green");
    $(".newgame:hover").css("background-color", "green");
-  playerIcon.addClass("nec");
+  icon = '<img src="assets/images/aalogo.png" alt="adeptus_astartes_logo" />';
+  
+  return icon;
 });
 
-$("#tau").on("click", function () {
-  $("li .select").css({
-  "background-color": "#fafafa", 
-  "cursor": "not-allowed"});
-  $(this).css("background-color", "orange").attr("aria-pressed", true);
+$("#tau").on("click", function (e) {
+  $(e.target).css("background-color", "orange").attr("aria-pressed", true);
+ $(".select:not(#tau)").attr("disabled", true);
   $("body").css("background-color", "orange");
   $(".newgame").addClass("ready");
    $(".newgame").css("background-color", "green");
    $(".newgame:hover").css("background-color", "green");
-  playerIcon.addClass("tau");
+  icon = '<img src="assets/images/aalogo.png" alt="adeptus_astartes_logo" />';
+
+  return icon;
 });
+};
 
 $(".newgame").on("click", function () {
   $(".box").removeClass("aa");
@@ -77,8 +82,8 @@ $(".newgame").on("click", function () {
   turnCount = turnCount + 1;
 });
 
-function validateTurn(boxplayed) {
-	if ( $(boxplayed).hasClass('free') ) {
+function validateTurn(box) {
+	if ( $(box).hasClass('free') ) {
 		turnValid = true;
 	} else {
 		turnValid = false;
@@ -86,14 +91,12 @@ function validateTurn(boxplayed) {
 	}
 };
   
-$(".box").on("click", function (e) { 
-    if(turnCount == 1, $(".newgame").hasClass("ready")) { 
+$(".box").on("click", function () { 
+    if(turnCount === 1, $(".newgame").hasClass("ready")) { 
     $("#info").text("Player 2 Plays Next"); 
-    $(e.target).html(playerIcon);  
     turnCount = 2;             
     } else {     
         $("#info").text("Player 1 Plays Next"); 
-        $(this).html(cpuIcon);  
         turnCount = 1; 
     } 
 }); 
@@ -106,7 +109,7 @@ $(".box").on('click', function player1Turn() {
 		$(this).removeClass("free");
 		$(this).addClass("played");
 		$(this).addClass("player1Move");
-		$(this).html(playerIcon);
+		$(this).prepend(playerIcon);
 
 		/*checkDraw();
 		checkWin();
