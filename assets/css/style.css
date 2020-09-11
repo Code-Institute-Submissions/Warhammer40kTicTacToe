@@ -127,7 +127,7 @@ table {
 
 #cha:hover {
     background-color: red;
-
+    
 }
 
 #eld:hover {
@@ -152,11 +152,14 @@ table {
 }
 
 .playerIcon {
-
+    padding-top: 2.3vh;
+    width: 75px;
+    height:75px
 }
 
 /*--------------------------Restart*/
 #restart {
+  background-color: darkgray;  
   max-width: 350px;
   padding: 10px;
   margin: 0 auto;

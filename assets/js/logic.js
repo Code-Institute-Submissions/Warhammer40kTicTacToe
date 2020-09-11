@@ -2,13 +2,12 @@
 $(document).ready(function() {
 
   let playerIcon;
-  var turnCount = 0;
+  let turnCount = 0;
   var turnValid = false;
   var selector = document.querySelectorAll(".select");
   
   $(selector).on("click", function (e) {
-    $(`.select:not(#${e.target.id})`).attr("disabled", true).css("cursor", "not-allowed");
-    $(`.select:not(#${e.target.id})`).removeClass(":hover");
+    $(`.select:not(#${e.target.id})`).attr("disabled", true).css({"cursor": "not-allowed", "background-color": "lightblue"});
     let startButton = $(".newgame")
     startButton.addClass("ready");
     startButton.css("background-color", "green");
@@ -21,20 +20,23 @@ $(document).ready(function() {
     playerIcon = `<img src="assets/images/${e.target.id}logo.png" class ="playerIcon" alt="${e.target.id}_logo" />`;
   });
 
-$(".newgame").on("click", function () {
-  $(".box").removeClass("player1Move");
-  $(".box").removeClass("player2Move");
+$(".newgame").on("click", function (e) {
+ if  ($(e.target).hasClass("ready"), turnCount === 0) {
+  $(".box").remove("img");
   $(".box").removeClass("played");
   $(".box").addClass("free");
   $(".box").css("cursor", "pointer");
-  $("#info").text("Player 1 Plays")
-  
-});
+  $("#info").text("Player 1 Plays");
+  turnCount = (turnCount + 1);
+ } else {
+     return false;
+ }
+    });
 
 function validateTurn(box) {
-	if ( $(box).hasClass('free') ) {
+	if ( $(box).hasClass('free'), $(box).empty() ) {
         turnValid = true;
-        turnCount = turnCount++;
+        
 	} else {
 		turnValid = false;
 		return false;
@@ -53,14 +55,15 @@ $(".box").on("click", function () {
 
 $(".box").on('click', function player1Turn() {
 
-	validateTurn(this);
+	validateTurn(this) === true;
 
 	if (turnValid, $(".newgame").hasClass("ready")) {
 		$(this).removeClass("free");
 		$(this).addClass("played");
-		$(this).addClass("player1Move");
-		$(this).prepend(playerIcon);
-
+        $(this).addClass("player1Move");
+        $(this).css("padding", "0");
+        $(this).prepend(playerIcon);
+       turnCount = $(turnCount + 1)
 		/*checkDraw();
 		checkWin();
 		cpuTurn();*/
@@ -77,4 +80,4 @@ $(".box").on('click', function player1Turn() {
 function checkWin(){}
 function cpuTurn(){}*/
 
-})
+});
