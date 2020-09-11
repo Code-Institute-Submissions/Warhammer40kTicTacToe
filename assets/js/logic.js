@@ -1,26 +1,39 @@
 
 $(document).ready(function() {
 
-var playerIcon = factionSelect(icon);
-var icon;
-var cpuIcon = cpuSelect();
+const playerIcon = $();
 var turnCount = 0;
 var turnValid = false;
 
-function factionSelect() {
+
+ /*var icon = null;  
+  var selector = $(button).hasClass(".select");
   
 
-  $("#aa").on("click", function (e) {
+ $(selector).on("click", function (e) { 
+   $(".newgame").addClass("ready");
+   $(".newgame").css("background-color", "green");
+   $(".newgame:hover").css("background-color", "green");
+   if ($(e.target).hasId("aa")) {
+        $(this).css("background-color", "blue").attr("aria-pressed", true);
+        $("body").css("background-color", "blue");
+        icon = '<img src="assets/images/aalogo.png" alt="adeptus_astartes_logo" />';
+        $(".select:not(#aa)").attr("disabled",true).css("cursor", "not-allowed");
+    }
+  return icon;
+  });*/
+$("#aa").on("click", function (e) {
+  $(e.target).css("background-color", "blue").attr("aria-pressed", true);
   $(".select:not(#aa)").attr("disabled", true);
-    $(e.target).css("background-color", "blue").attr("aria-pressed", true);
   $("body").css("background-color", "blue");
   $(".newgame").addClass("ready");
    $(".newgame").css("background-color", "green");
    $(".newgame:hover").css("background-color", "green");
-  icon = "<img src='assets/images/aalogo.png' alt='adeptus_astartes_logo' />";
+   icon = '<img src="assets/images/aalogo.png" alt="adeptus_astartes_logo" />';
+   
+   return icon;
+});
 
-  return icon;
-  });
 
 $("#cha").on("click", function (e) {
   $(e.target).css("background-color", "red").attr("aria-pressed", true);
@@ -36,7 +49,7 @@ $("#cha").on("click", function (e) {
 
 $("#eld").on("click", function (e) {
   $(e.target).css("background-color", "green").attr("aria-pressed", true);
-   $(".select:not(#eld)").attr("disabled", true);
+  $(".select:not(#eld)").attr("disabled", true);
   $("body").css("background-color", "green");
   $(".newgame").addClass("ready");
   $(".newgame").css("background-color", "green");
@@ -69,14 +82,12 @@ $("#tau").on("click", function (e) {
 
   return icon;
 });
-};
+
 
 $(".newgame").on("click", function () {
-  $(".box").removeClass("aa");
-  $(".box").removeClass("cha");
-  $(".box").removeClass("eld");
-  $(".box").removeClass("nec");
-  $(".box").removeClass("tau");
+  $(".box").removeClass("player1Move");
+  $(".box").removeClass("player2Move");
+  $(".box").removeClass("played");
   $(".box").addClass("free");
   $("#info").text("Player 1 Plays")
   turnCount = turnCount + 1;
@@ -84,7 +95,8 @@ $(".newgame").on("click", function () {
 
 function validateTurn(box) {
 	if ( $(box).hasClass('free') ) {
-		turnValid = true;
+        turnValid = true;
+        turnCount = turnCount++;
 	} else {
 		turnValid = false;
 		return false;
@@ -121,5 +133,10 @@ $(".box").on('click', function player1Turn() {
 	};
 	
 })
+
+
+/*function checkDraw(){}
+function checkWin(){}
+function cpuTurn(){}*/
 
 })
