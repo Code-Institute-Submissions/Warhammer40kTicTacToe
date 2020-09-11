@@ -1,96 +1,34 @@
 
 $(document).ready(function() {
 
-const playerIcon = $();
-var turnCount = 0;
-var turnValid = false;
-
-
- /*var icon = null;  
-  var selector = $(button).hasClass(".select");
+  let playerIcon;
+  var turnCount = 0;
+  var turnValid = false;
+  var selector = document.querySelectorAll(".select");
   
+  $(selector).on("click", function (e) {
+    $(`.select:not(#${e.target.id})`).attr("disabled", true).css("cursor", "not-allowed");
+    $(`.select:not(#${e.target.id})`).removeClass(":hover");
+    let startButton = $(".newgame")
+    startButton.addClass("ready");
+    startButton.css("background-color", "green");
+    $(".newgame:hover").css("background-color", "green");
 
- $(selector).on("click", function (e) { 
-   $(".newgame").addClass("ready");
-   $(".newgame").css("background-color", "green");
-   $(".newgame:hover").css("background-color", "green");
-   if ($(e.target).hasId("aa")) {
-        $(this).css("background-color", "blue").attr("aria-pressed", true);
-        $("body").css("background-color", "blue");
-        icon = '<img src="assets/images/aalogo.png" alt="adeptus_astartes_logo" />';
-        $(".select:not(#aa)").attr("disabled",true).css("cursor", "not-allowed");
-    }
-  return icon;
-  });*/
-$("#aa").on("click", function (e) {
-  $(e.target).css("background-color", "blue").attr("aria-pressed", true);
-  $(".select:not(#aa)").attr("disabled", true);
-  $("body").css("background-color", "blue");
-  $(".newgame").addClass("ready");
-   $(".newgame").css("background-color", "green");
-   $(".newgame:hover").css("background-color", "green");
-   icon = '<img src="assets/images/aalogo.png" alt="adeptus_astartes_logo" />';
-   
-   return icon;
-});
+    let factionColor = e.target.dataset.color;
 
-
-$("#cha").on("click", function (e) {
-  $(e.target).css("background-color", "red").attr("aria-pressed", true);
-  $(".select:not(#cha)").attr("disabled", true);
-  $("body").css("background-color", "red");
-  $(".newgame").addClass("ready");
-   $(".newgame").css("background-color", "green");
-   $(".newgame:hover").css("background-color", "green");
-   icon = '<img src="assets/images/aalogo.png" alt="adeptus_astartes_logo" />';
-   
-   return icon;
-});
-
-$("#eld").on("click", function (e) {
-  $(e.target).css("background-color", "green").attr("aria-pressed", true);
-  $(".select:not(#eld)").attr("disabled", true);
-  $("body").css("background-color", "green");
-  $(".newgame").addClass("ready");
-  $(".newgame").css("background-color", "green");
-  $(".newgame:hover").css("background-color", "green");
-  icon = '<img src="assets/images/aalogo.png" alt="adeptus_astartes_logo" />';
-  
-  return icon;
-});
-
-$("#nec").on("click", function (e) {
-  $(e.target).css("background-color", "silver").attr("aria-pressed", true);
-  $(".select:not(#nec)").attr("disabled", true);
-  $("body").css("background-color", "silver");
-  $(".newgame").addClass("ready");
-   $(".newgame").css("background-color", "green");
-   $(".newgame:hover").css("background-color", "green");
-  icon = '<img src="assets/images/aalogo.png" alt="adeptus_astartes_logo" />';
-  
-  return icon;
-});
-
-$("#tau").on("click", function (e) {
-  $(e.target).css("background-color", "orange").attr("aria-pressed", true);
- $(".select:not(#tau)").attr("disabled", true);
-  $("body").css("background-color", "orange");
-  $(".newgame").addClass("ready");
-   $(".newgame").css("background-color", "green");
-   $(".newgame:hover").css("background-color", "green");
-  icon = '<img src="assets/images/aalogo.png" alt="adeptus_astartes_logo" />';
-
-  return icon;
-});
-
+    $(this).css("background-color", factionColor).attr("aria-pressed", true);
+    $("body").css("background-color", factionColor);
+    playerIcon = `<img src="assets/images/${e.target.id}logo.png" class ="playerIcon" alt="${e.target.id}_logo" />`;
+  });
 
 $(".newgame").on("click", function () {
   $(".box").removeClass("player1Move");
   $(".box").removeClass("player2Move");
   $(".box").removeClass("played");
   $(".box").addClass("free");
+  $(".box").css("cursor", "pointer");
   $("#info").text("Player 1 Plays")
-  turnCount = turnCount + 1;
+  
 });
 
 function validateTurn(box) {

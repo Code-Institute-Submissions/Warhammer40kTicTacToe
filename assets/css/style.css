@@ -67,7 +67,7 @@ body {
   border: 0px transparent;
   margin: 20px;
   padding: 20px;
-}
+ }
 
 .board {
   margin: 0 auto;
@@ -86,7 +86,7 @@ table {
   border: 0;
 }
 
-.nav-header {
+.factiontext {
     padding-top: 5vh;
 }
 
@@ -151,6 +151,10 @@ table {
     background-color: grey;
 }
 
+.playerIcon {
+
+}
+
 /*--------------------------Restart*/
 #restart {
   max-width: 350px;
@@ -161,6 +165,7 @@ table {
 .restart:hover {
   opacity: 0.8;
 }
+
 
 /*------------------------Factions*/
 .aa {
