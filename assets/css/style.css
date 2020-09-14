@@ -69,7 +69,7 @@ body {
   padding: 20px;
  }
 
-.board {
+.col-md-6, .col-lg-6 {
   margin: 0 auto;
   margin-top: 5vh;
 }
@@ -167,36 +167,6 @@ table {
 
 .restart:hover {
   opacity: 0.8;
-}
-
-
-/*------------------------Factions*/
-.aa {
-    background-image: url('assets/images/aalogo.png');
-}
-
-.cha {
-    background-image: url('assets/images/chaoslogo.png');
-}
-
-.eld {
-    background-image: url('assets/images/eldarlogo.png');
-}
-
-.nec {
-    background-image: url('assets/images/necronslogo.png');
-}
-
-.tau {
-    background-image: url('assets/images/taulogo.png');
-}
-
-.aa, .cha, .eld, .nec, .tau {
-  height: 50px;
-  width: 50px;
-  margin: 0;
-  border: 0;
-  padding: 0;
 }
 
 /*--------------------------Footer*/

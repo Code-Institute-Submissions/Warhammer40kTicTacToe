@@ -2,8 +2,10 @@
 $(document).ready(function() {
 
   let playerIcon;
-  let turnCount = 0;
+  let cpuIcon;
+  let turnCount;
   var turnValid = false;
+  var box = document.querySelectorAll(".box");
   var selector = document.querySelectorAll(".select");
   
   $(selector).on("click", function (e) {
@@ -17,24 +19,30 @@ $(document).ready(function() {
 
     $(this).css("background-color", factionColor).attr("aria-pressed", true);
     $("body").css("background-color", factionColor);
-    playerIcon = `<img src="assets/images/${e.target.id}logo.png" class ="playerIcon" alt="${e.target.id}_logo" />`;
+    playerIcon = `<img src="assets/images/${e.target.id}logo.png" class ="playerIcon ${e.target.id}" alt="${e.target.id}_logo" />`;
+
+    cpuIconSelect(!this);
   });
 
+function cpuIconSelect() {
+    var randomNumber = Math.floor((Math.random()*))
+}
+
 $(".newgame").on("click", function (e) {
- if  ($(e.target).hasClass("ready"), turnCount === 0) {
+ if  ($(e.target).hasClass("ready"), turnCount) {
   $(".box").remove("img");
   $(".box").removeClass("played");
   $(".box").addClass("free");
   $(".box").css("cursor", "pointer");
   $("#info").text("Player 1 Plays");
-  turnCount = (turnCount + 1);
+  turnCount = 1;
  } else {
      return false;
  }
     });
 
 function validateTurn(box) {
-	if ( $(box).hasClass('free'), $(box).empty() ) {
+	if ( $(box).hasClass('free'), $(box).empty()) {
         turnValid = true;
         
 	} else {
@@ -43,7 +51,7 @@ function validateTurn(box) {
 	}
 };
   
-$(".box").on("click", function () { 
+$(box).on("click", function () { 
     if(turnCount === 1, $(".newgame").hasClass("ready")) { 
     $("#info").text("Player 2 Plays Next"); 
     turnCount = 2;             
@@ -53,17 +61,17 @@ $(".box").on("click", function () {
     } 
 }); 
 
-$(".box").on('click', function player1Turn() {
+$(box).on('click', function player1Turn(e) {
+   
+	validateTurn(this);
 
-	validateTurn(this) === true;
-
-	if (turnValid, $(".newgame").hasClass("ready")) {
+	if (turnValid, $(".newgame").hasClass("ready"),(this).hasClass("free")) {
 		$(this).removeClass("free");
 		$(this).addClass("played");
         $(this).addClass("player1Move");
         $(this).css("padding", "0");
         $(this).prepend(playerIcon);
-       turnCount = $(turnCount + 1)
+       turnCount++
 		/*checkDraw();
 		checkWin();
 		cpuTurn();*/
@@ -72,9 +80,28 @@ $(".box").on('click', function player1Turn() {
 		$(this).css({"background-color": "red",
                      "opacity": "0.2"});
 	};
-	
+    $("#restart", "#restart:hover").css("backgrond-color", "red").attr("aria-pressed", false);
+    setTimeout(() => { 
+            $(this).css("background-color", "white"); 
+        }, 800);         
 })
 
+
+function restart() {
+	$(box).removeClass("played");
+	$(box).removeClass("Player2Move");
+	$(box).removeClass("Player1Move");
+	$(box).remove("img");
+    $(box).addClass("free");
+    $(selector).remove("background-color", factionColor).attr("aria-pressed", false);
+    $("body").remove("background-color", factionColor);
+    turnCount = 0; 
+};
+
+$("#restart").on("click", function() {
+    restart();
+    $(this).remove("background-color");
+});
 
 /*function checkDraw(){}
 function checkWin(){}
