@@ -98,7 +98,11 @@ table {
   margin-top: 20px;
 }
 
-
+.navbar-nav li a {
+    padding: 10px 0;
+    margin: 0 auto;
+    border-radius: 5px;
+}
 
 .navbar-nav li img {
   height: 40px;
@@ -131,11 +135,11 @@ table {
 }
 
 #eld:hover {
-    background-color: green;
+    background-color: gold;
 }
 
 #nec:hover {
-    background-color: silver;
+    background-color: yellowgreen;
 }
 
 #tau:hover {
@@ -151,7 +155,7 @@ table {
     background-color: grey;
 }
 
-.playerIcon {
+.aa, .cha, .eld, .nec, .tau {
     padding-top: 2.3vh;
     width: 75px;
     height:75px
@@ -165,7 +169,7 @@ table {
   margin: 0 auto;
 }
 
-.restart:hover {
+#restart:hover {
   opacity: 0.8;
 }
 
