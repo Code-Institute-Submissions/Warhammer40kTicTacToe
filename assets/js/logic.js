@@ -17,6 +17,7 @@ $(document).ready(function () {
     $(this).css("background-color", factionColor).attr("aria-pressed", true);
     $("body").css("background-color", factionColor);
     playerIcon = `<img src="assets/images/${e.target.id}logo.png" class ="${e.target.id}" alt="${e.target.id}_logo" />`;
+    return playerIcon;
 
     cpuIconSelect();
   });
@@ -38,8 +39,11 @@ $(document).ready(function () {
   $(startButton).on("click", function () {
     if ($(this).hasClass("ready")) {
       $(box).remove("img");
+      $(box).removeClass("cpuTurn");
+      $(box).removeClass("playerTurn");
       $(box).addClass("free");
       $(box).css("cursor", "pointer");
+      $("#restart").attr("disabled", false);
       $(this).attr("disabled", true).css("cursor", "not-allowed");
       $("#info").text("Player Turn");
 
@@ -63,47 +67,47 @@ $(document).ready(function () {
 
     validateTurn(e.target);
 
-    if (turnValid === true, $(startButton).hasClass("ready")) {
+    if (turnValid === true) {
       $(this).removeClass("free");
       $(this).addClass("playerMove");
       $(this).css("padding", "0");
       $(this).prepend(playerIcon);
-      $("#info").text("Cpu Turn Next");
+      $("#info").text("Cpu Turn Is Next");
+     
       cpuTurn();
       //checkDraw();
-	  //checkWin();
+      //checkWin();
+      
     } else {
-      $(this).css({ "background-color": "red", opacity: "0.2" });
-      $(this).fadeOut(800);
+      $(this).css({ "background-color": "red", "opacity": "0.15" }).fadeOut(800);
+      $(this).css("background-color", "white");
       $("#info").text("Invalid Move");
-    }
-
-    $("#restart", "#restart:hover").css("background-color", "red").attr("disabled", false);
+    }    
   });
 }
 
   function cpuTurn() {
+    let i;
     
-    for (var i = 0; i < 9; i++) {
+    for (i = 0; i < 9; i++) {
     
-    let randomNumber = Math.floor((Math.random() * 9) + 1);
-    let randomBox = $(`#${randomNumber}.box`);
+    let randomNumber = Math.floor((Math.random(i) * 9) + 1);
+    let helper = `${randomNumber}`;    
+    let randomBox = $("#" + helper + ".box");
 
     validateTurn(randomBox);
 
-     if (turnValid === true) {
+    if (turnValid === true) {
       randomBox.removeClass("free");
       randomBox.addClass("cpuMove");
       randomBox.css("padding", "0");
       randomBox.prepend(cpuIcon);
-      $("#info").text("Player Turn Next");
+      $("#info").text("Player Turn Is Next");
 
        //checkDraw();
 	  //checkWin();
       player1Turn();
-    } else {
-      return false;
-  }
+    } 
 }
 }
 
