@@ -31,10 +31,9 @@ $(document).ready(function () {
     ];
     let arrayLength = iconArray.pop(playerIcon);
 
-    randomSelect = Math.floor(Math.random() * arrayLength);
+    let randomSelect = Math.floor(Math.random() * arrayLength);
     cpuIcon = randomSelect;
-    return cpuIcon;
-  };
+}
 
   $(startButton).on("click", function () {
     if ($(this).hasClass("ready")) {
@@ -81,15 +80,14 @@ $(document).ready(function () {
 
     $("#restart", "#restart:hover").css("background-color", "red").attr("disabled", false);
   });
-};
+}
 
   function cpuTurn() {
     
-    for (i = 0; i < 9; i++) {
+    for (var i = 0; i < 9; i++) {
     
     let randomNumber = Math.floor((Math.random() * 9) + 1);
-    let boxId = $(box.hasId(Number));
-    var randomBox = boxId.eq(randomNumber);
+    let randomBox = $(`#${randomNumber}.box`);
 
     validateTurn(randomBox);
 
@@ -102,20 +100,20 @@ $(document).ready(function () {
 
        //checkDraw();
 	  //checkWin();
-      player1Turn()
+      player1Turn();
     } else {
       return false;
-  };
-};
-};
+  }
+}
+}
 
   function restart() {
     $(box).removeClass("cpuMove");
     $(box).removeClass("playerMove");
     $(box).remove("img");
     $(box).addClass("free");
-    $(selector).remove("background-color", factionColor).ramoveAttr("disabled");
-    $("body").remove("background-color", factionColor);
+    $(selector).remove("background-color").removeAttr("disabled");
+    $("body").remove("background-color");
     $("#info").text("Select A Faction And Press Start A New Game");
    }
 
