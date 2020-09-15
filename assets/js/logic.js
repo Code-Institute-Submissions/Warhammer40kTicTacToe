@@ -34,6 +34,7 @@ $(document).ready(function () {
 
     let randomSelect = Math.floor(Math.random() * arrayLength);
     cpuIcon = randomSelect;
+    return cpuIcon;
 }
 
   $(startButton).on("click", function () {
@@ -98,6 +99,7 @@ $(document).ready(function () {
     validateTurn(randomBox);
 
     if (turnValid === true) {
+
       randomBox.removeClass("free");
       randomBox.addClass("cpuMove");
       randomBox.css("padding", "0");
