@@ -60,7 +60,7 @@ $(document).ready(function () {
       boxValid = true;
     } else {
       boxValid = false;
-      $(box).css("background-color", "red").fadeTo(100, 0.5, function() { $(this).css("background-color", "#fafafa").fadeTo(100, 1.0); });
+      $(box).css("background-color", "red").fadeTo(110, 0.5, function() { $(this).css("background-color", "#fafafa").fadeTo(100, 1.0); });
       $("#info").text("Invalid Move");
       return false;
     }
@@ -86,9 +86,9 @@ $(document).ready(function () {
 
   function cpuTurn() {
         
-    let randomNumber = Math.floor(Math.random() * 9);
-
-    let randomBox = document.getElementById(`${randomNumber}`);   
+    let randomNumber = Math.floor(Math.random() * 8);
+    
+   let randomBox = document.getElementById(`${randomNumber}`);   
 
     let $cpuBox = $(randomBox);
     
