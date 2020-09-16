@@ -24,17 +24,23 @@ $(document).ready(function () {
   });
 
   function cpuIconSelect() {
-    let iconArray = [
-      `<img src="assets/images/aalogo.png" class ="aa" alt="aa_logo" />`,
-      `<img src="assets/images/chalogo.png" class ="cha" alt="cha_logo" />`,
-      `<img src="assets/images/eldlogo.png" class ="eld" alt="eld_logo" />`,
-      `<img src="assets/images/neclogo.png" class ="nec" alt="nec_logo" />`,
-      `<img src="assets/images/taulogo.png" class ="tau" alt="tau_logo" />`
-    ];
-    let arrayLength = iconArray.pop(playerIcon);
+    
+    let iconArray = [];
+
+    iconArray.push(`<img src="assets/images/aalogo.png" class ="aa" alt="aa_logo" />`);
+    iconArray.push(`<img src="assets/images/chalogo.png" class ="cha" alt="cha_logo" />`);
+    iconArray.push(`<img src="assets/images/eldlogo.png" class ="eld" alt="eld_logo" />`);
+    iconArray.push(`<img src="assets/images/neclogo.png" class ="nec" alt="nec_logo" />`);
+    iconArray.push(`<img src="assets/images/taulogo.png" class ="tau" alt="tau_logo" />`);
+    
+    let iconIndex = iconArray.indexOf(playerIcon)
+    let removeIcon = iconArray.splice(playerIcon, iconIndex);
+
+
+    let arrayLength = iconArray.length; 
 
     let randomSelect = Math.floor(Math.random() * arrayLength);
-    cpuIcon = randomSelect;
+    cpuIcon = iconArray[randomSelect];
     
 }
 
@@ -85,14 +91,14 @@ $(document).ready(function () {
 }
 
   function cpuTurn() {
-        
+     
     let randomNumber = Math.floor(Math.random() * 8);
     
    let randomBox = document.getElementById(`${randomNumber}`);   
 
     let $cpuBox = $(randomBox);
     
-    validateBox($cpuBox);
+    validateBox($cpuBox[0]);
 
     if (boxValid === true) {
       $cpuBox.removeClass("free");
@@ -108,10 +114,11 @@ $(document).ready(function () {
 
 
   function restart() {
-    $(box).removeClass("cpuMove" || "playerMove");
+    debugger;
     $(box).empty();
+    $(box).removeClass("cpuMove");
+    $(box).removeClass("playerMove");
     $(box).addClass("free");
-    $(selector).attr("disabled", false);
     $(selector).removeClass("active");
     $(selector).attr("aria-pressed", false);
     $(selector).attr("disabled", false);

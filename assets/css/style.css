@@ -175,7 +175,7 @@ table {
 /*--------------------------Restart*/
 #restart {
   
-  max-width: 15vw;
+   width: 380px;
   padding: 10px;
   margin: 0 auto;
 }
@@ -198,4 +198,6 @@ table {
   .main {
     display: flex;
   }
+
+ 
 }
