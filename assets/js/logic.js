@@ -18,7 +18,7 @@ $(document).ready(function () {
     $(this).css("background-color", factionColor).attr("aria-pressed", true);
     $("body").css("background-color", factionColor);
     playerIcon = `<img src="assets/images/${e.target.id}logo.png" class ="${e.target.id}" alt="${e.target.id}_logo" />`;
-    return playerIcon;
+
     
     cpuIconSelect();
   });
@@ -35,7 +35,7 @@ $(document).ready(function () {
 
     let randomSelect = Math.floor(Math.random() * arrayLength);
     cpuIcon = randomSelect;
-    return cpuIcon;
+    
 }
 
   $(startButton).on("click", function () {
@@ -108,15 +108,20 @@ $(document).ready(function () {
 
 
   function restart() {
-    $(box).removeClass("cpuMove");
-    $(box).removeClass("playerMove");
+    $(box).removeClass("cpuMove" || "playerMove");
     $(box).empty();
     $(box).addClass("free");
     $(selector).attr("disabled", false);
+    $(selector).removeClass("active");
+    $(selector).attr("aria-pressed", false);
+    $(selector).attr("disabled", false);
     $(selector).css({"background-color": "#fafafa", "cursor": "pointer"});
     $(startButton).removeClass("ready");
+    $(startButton).css("cursor", "pointer");
+    $(startButton).attr("disabled", true);
     $("body").css("background-color", "#75757c");
     $("#info").text("Select A Faction And Press Start A New Game");
+
    }
 
   $("#restart").on("click", function () {
