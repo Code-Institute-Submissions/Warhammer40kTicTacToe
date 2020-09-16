@@ -1,10 +1,11 @@
 $(document).ready(function () {
   let playerIcon;
   let cpuIcon;
-  var turnValid = false;
+  var boxValid;
   var startButton = $(".newgame");
-  var box = document.querySelectorAll(".box");
   var selector = document.querySelectorAll(".select");
+  const box = document.querySelectorAll(".box");
+ 
 
   $(selector).on("click", function (e) {
     $(`.select:not(#${e.target.id})`).attr("disabled", true).css({"cursor": "not-allowed", "background-color": "lightgray"});
@@ -18,7 +19,7 @@ $(document).ready(function () {
     $("body").css("background-color", factionColor);
     playerIcon = `<img src="assets/images/${e.target.id}logo.png" class ="${e.target.id}" alt="${e.target.id}_logo" />`;
     return playerIcon;
-
+    
     cpuIconSelect();
   });
 
@@ -40,8 +41,8 @@ $(document).ready(function () {
   $(startButton).on("click", function () {
     if ($(this).hasClass("ready")) {
       $(box).remove("img");
-      $(box).removeClass("cpuTurn");
-      $(box).removeClass("playerTurn");
+      $(box).removeClass("cpuMove");
+      $(box).removeClass("playerMove");
       $(box).addClass("free");
       $(box).css("cursor", "pointer");
       $("#restart").attr("disabled", false);
@@ -54,11 +55,13 @@ $(document).ready(function () {
     }
   });
 
-  function validateTurn(box) {
+  function validateBox(box) {
     if ($(box).hasClass("free")) {
-      turnValid = true;
+      boxValid = true;
     } else {
-      turnValid = false;
+      boxValid = false;
+      $(this).css("background-color", "red").fadeTo(100, 0.5, function() { $(this).css("background-color", "#fafafa").fadeTo(100, 1.0); });
+      $("#info").text("Invalid Move");
       return false;
     }
   }
@@ -66,52 +69,42 @@ $(document).ready(function () {
   function player1Turn() {
       $(box).on("click", function (e) {
 
-    validateTurn(e.target);
+    validateBox(e.target);
 
-    if (turnValid === true) {
+    if (boxValid === true) {
       $(this).removeClass("free");
       $(this).addClass("playerMove");
-      $(this).css("padding", "0");
       $(this).prepend(playerIcon);
-      $("#info").text("Cpu Turn Is Next");
-     
+           
       cpuTurn();
       //checkDraw();
-      //checkWin();
-      
-    } else {
-      $(this).css({ "background-color": "red", "opacity": "0.15" }).fadeOut(800);
-      $(this).css("background-color", "white");
-      $("#info").text("Invalid Move");
-    }    
+      //checkWin();      
+    } 
   });
 }
 
   function cpuTurn() {
-    let i;
+        
+    let randomNumber = Math.floor((Math.random() * 9) + 1);
+
+    let randomBox = document.getElementById(`${randomNumber}`);   
+
+    let $boxSelect = $(randomBox);
     
-    for (i = 0; i < 9; i++) {
-    
-    let randomNumber = Math.floor((Math.random(i) * 9) + 1);
-    let helper = `${randomNumber}`;    
-    let randomBox = $("#" + helper + ".box");
+    validateBox($boxSelect);
 
-    validateTurn(randomBox);
-
-    if (turnValid === true) {
-
-      randomBox.removeClass("free");
-      randomBox.addClass("cpuMove");
-      randomBox.css("padding", "0");
-      randomBox.prepend(cpuIcon);
+    if (boxValid === true) {
+      $boxSelect.removeClass("free");
+      $boxSelect.addClass("cpuMove");
+      $boxSelect.prepend(cpuIcon);
       $("#info").text("Player Turn Is Next");
 
        //checkDraw();
 	  //checkWin();
       player1Turn();
-    } 
+    }
 }
-}
+
 
   function restart() {
     $(box).removeClass("cpuMove");
