@@ -60,7 +60,7 @@ $(document).ready(function () {
       boxValid = true;
     } else {
       boxValid = false;
-      $(this).css("background-color", "red").fadeTo(100, 0.5, function() { $(this).css("background-color", "#fafafa").fadeTo(100, 1.0); });
+      $(box).css("background-color", "red").fadeTo(100, 0.5, function() { $(this).css("background-color", "#fafafa").fadeTo(100, 1.0); });
       $("#info").text("Invalid Move");
       return false;
     }
@@ -75,31 +75,32 @@ $(document).ready(function () {
       $(this).removeClass("free");
       $(this).addClass("playerMove");
       $(this).prepend(playerIcon);
-           
-      cpuTurn();
+
       //checkDraw();
-      //checkWin();      
+      //checkWin();         
+      cpuTurn();
+         
     } 
   });
 }
 
   function cpuTurn() {
         
-    let randomNumber = Math.floor((Math.random() * 9) + 1);
+    let randomNumber = Math.floor(Math.random() * 9);
 
     let randomBox = document.getElementById(`${randomNumber}`);   
 
-    let $boxSelect = $(randomBox);
+    let $cpuBox = $(randomBox);
     
-    validateBox($boxSelect);
+    validateBox($cpuBox);
 
     if (boxValid === true) {
-      $boxSelect.removeClass("free");
-      $boxSelect.addClass("cpuMove");
-      $boxSelect.prepend(cpuIcon);
+      $cpuBox.removeClass("free");
+      $cpuBox.addClass("cpuMove");
+      $cpuBox.prepend(cpuIcon);
       $("#info").text("Player Turn Is Next");
 
-       //checkDraw();
+      //checkDraw();
 	  //checkWin();
       player1Turn();
     }
@@ -109,10 +110,12 @@ $(document).ready(function () {
   function restart() {
     $(box).removeClass("cpuMove");
     $(box).removeClass("playerMove");
-    $(box).remove("img");
+    $(box).empty();
     $(box).addClass("free");
-    $(selector).remove("background-color").removeAttr("disabled");
-    $("body").remove("background-color");
+    $(selector).attr("disabled", false);
+    $(selector).css({"background-color": "#fafafa", "cursor": "pointer"});
+    $(startButton).removeClass("ready");
+    $("body").css("background-color", "#75757c");
     $("#info").text("Select A Faction And Press Start A New Game");
    }
 
