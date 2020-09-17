@@ -82,8 +82,8 @@ $(document).ready(function () {
       $(this).addClass("playerMove");
       $(this).prepend(playerIcon);
 
-      //checkDraw();
-      //checkWin();         
+      checkDraw();
+      checkWin();         
       cpuTurn();
          
     } 
@@ -106,8 +106,9 @@ $(document).ready(function () {
       $cpuBox.prepend(cpuIcon);
       $("#info").text("Player Turn Is Next");
 
-      //checkDraw();
-	  //checkWin();
+      checkDraw();
+      checkWin();
+      
       player1Turn();
     }
 }
@@ -136,6 +137,74 @@ $(document).ready(function () {
     $(this).attr("disabled", true);
   });
 
-//function checkDraw(){}
-//function checkWin(){}
+function checkWin() {
+    debugger;
+
+    let box0 = $("#0");
+    let box1 = $("#1");
+    let box2 = $("#2");
+    let box3 = $("#3");
+    let box4 = $("#4");
+    let box5 = $("#5");
+    let box6 = $("#6");
+    let box7 = $("#7");
+    let box8 = $("#8");
+    
+	if (box0.hasClass("playerMove") && box1.hasClass("playerMove") && box2.hasClass("playerMove")) {
+		 $("#info").text("You Have Won! <br> Press Restart To Play Again!");
+	} else if (box0.hasClass("cpuMove") && box1.hasClass("cpuMove") && box2.hasClass("cpuMove")) {
+		$("#info").text("You Have Lost! <br> Press Restart To Play Again!");
+	}
+
+	else if (box3.hasClass("playerMove") && box4.hasClass("playerMove") && box5.hasClass("playerMove")) {
+		$("#info").text("You Have Won! <br> Press Restart To Play Again!");
+	} else if (box3.hasClass("cpuMove") && box4.hasClass("cpuMove") && box5.hasClass("cpuMove")) {
+		$("#info").text("You Have Lost! <br> Press Restart To Play Again!");
+	}
+
+	else if (box6.hasClass("playerMove") && box7.hasClass("playerMove") && box8.hasClass("playerMove")) {
+		$("#info").text("You Have Won! <br> Press Restart To Play Again!");
+	} else if (box6.hasClass("cpuMove") && box7.hasClass("cpuMove") && box8.hasClass("cpuMove")) {
+		$("#info").text("You Have Lost! <br> Press Restart To Play Again!");
+	}
+
+	else if (box0.hasClass("playerMove") && box3.hasClass("playerMove") && box6.hasClass("playerMove")) {
+		$("#info").text("You Have Won! <br> Press Restart To Play Again!");
+	} else if (box0.hasClass("cpuMove") && box3.hasClass("cpuMove") && box6.hasClass("cpuMove")) {
+		$("#info").text("You Have Lost! <br> Press Restart To Play Again!");
+	}
+
+	else if (box4.hasClass("playerMove") && box1.hasClass("playerMove") && box7.hasClass("playerMove")) {
+		$("#info").text("You Have Won! <br> Press Restart To Play Again!");
+	} else if (box4.hasClass("cpuMove") && box1.hasClass("cpuMove") && box7.hasClass("cpuMove")) {
+		$("#info").text("You Have Lost! <br> Press Restart To Play Again!");
+	}
+
+	else if (box5.hasClass("playerMove") && box8.hasClass("playerMove") && box2.hasClass("playerMove")) {
+		$("#info").text("You Have Won! <br> Press Restart To Play Again!");
+	} else if (box5.hasClass("cpuMove") && box8.hasClass("cpuMove") && box2.hasClass("cpuMove")) {
+		$("#info").text("You Have Lost! <br> Press Restart To Play Again!");
+	}
+
+	else if (box0.hasClass("playerMove") && box4.hasClass("playerMove") && box8.hasClass("playerMove")) {
+		$("#info").text("You Have Won! <br> Press Restart To Play Again!");
+	} else if (box0.hasClass("cpuMove") && box4.hasClass("cpuMove") && box8.hasClass("cpuMove")) {
+		$("#info").text("You Have Lost! <br> Press Restart To Play Again!");
+	}
+	
+	else if (box4.hasClass("playerMove") && box6.hasClass("playerMove") && box2.hasClass("playerMove")) {
+		$("#info").text("You Have Won! <br> Press Restart To Play Again!");
+	} else if (box4.hasClass("cpuMove") && box6.hasClass("cpuMove") && box2.hasClass("cpuMove")) {
+		$("#info").text("You Have Lost! <br> Press Restart To Play Again!");
+	}
+	}
+
+
+function checkDraw() {
+    debugger;
+	if (!($(box).hasClass("free"))) {
+		$("#info").text("It's A Draw! <br> Press Restart To Play Again!");
+		
+	}
+}
 });
