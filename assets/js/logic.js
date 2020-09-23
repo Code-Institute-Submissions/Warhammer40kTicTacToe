@@ -3,8 +3,8 @@ $(document).ready(function () {
   let cpuIcon;
   let win = false;
   let score = $("#score");
-  var turnCount = 0 ;
-  var boxValid;
+  var turn = 0;
+  var boxValid = false;
   var startButton = $(".newgame");
   var selector = document.querySelectorAll(".select");
   const box = document.querySelectorAll(".box");
@@ -19,13 +19,12 @@ $(document).ready(function () {
     $(this).css("background-color", factionColor).attr("aria-pressed", true);
     $("body").css("background-color", factionColor);
     playerIcon = `<img src="assets/images/${e.target.id}logo.png" class ="${e.target.id}" alt="${e.target.id}_logo" />`;
-
     
     cpuIconSelect();
   });
 
   function cpuIconSelect() {
-        
+    
     let iconArray = [];
 
     iconArray.push(`<img src="assets/images/aalogo.png" class ="aa" alt="aa_logo" />`);
@@ -33,8 +32,8 @@ $(document).ready(function () {
     iconArray.push(`<img src="assets/images/eldlogo.png" class ="eld" alt="eld_logo" />`);
     iconArray.push(`<img src="assets/images/neclogo.png" class ="nec" alt="nec_logo" />`);
     iconArray.push(`<img src="assets/images/taulogo.png" class ="tau" alt="tau_logo" />`);
-      
-    iconArray.shift(playerIcon);
+    
+    iconArray.slice(playerIcon);
     
     let newArrayLength = iconArray.length;
        
@@ -50,43 +49,54 @@ $(document).ready(function () {
       $(this).attr("disabled", true).css("cursor", "not-allowed");
       $("#restart").attr("disabled", false);
       $("#info").text("Player Turn");
-      turnCount++;
-      turnCount;
-      playerTurn();
+      
+      turn = 1;
+      checkTurn();
     } 
   });
 
+
   function validateBox(box) {
-    if ($(box).hasClass("free")) {
+      
+    if ($(box).hasClass("free") && $(box).not(".playerMove") && $(box).not("cpuMove")) {
       boxValid = true;
        
-    } else {
+    } else if ($(box).hasClass("playerMove") || $(box).hasClass("cpuMove")) {
       boxValid = false;
-      $(box).css("background-color", "red").fadeTo(110, 0.5, function() { $(this).css("background-color", "#fafafa").fadeTo(100, 1.0); });
-      $("#info").text("Invalid Move");
+      
+      $(this).css("background-color", "red"); 
+        setTimeout(function() { 
+            $(this).css("background-color", "white"); 
+        }, 800);         
+    } else if ($(box).not("free")) {
+        boxValid = false;
+        $("#info").text("It's A Draw. Press Restart To Play Again!");
+        win = false;
     }
+}
+  
+  function checkTurn() {
+      if (turn > 0, turn == 1) {
+          playerTurn();
+     } else if (turn > 0, turn == 2) {
+          cpuTurn();
+      }
   }
 
   function playerTurn() {
-     
-      $(box).on("click", function () {
+        
+    $(box).on("click", function () {
     
     validateBox(this);
 
-    if (boxValid === true) {
+    if (boxValid == true) {
       $(this).removeClass("free");
       $(this).addClass("playerMove");
       $(this).prepend(playerIcon);
-           
-      checkWin(); 
-
-      if (win === false) {        
-      turnCount++;
-      turnCount;
-      cpuTurn();
-      };     
       
-         
+      checkWin();
+      turn = 2;      
+      checkTurn();   
     } 
   });
 }
@@ -101,25 +111,20 @@ $(document).ready(function () {
     
     validateBox($cpuBox[0]);
 
-    if (boxValid === true && win === false) {
+    if (boxValid == true) {
       $cpuBox.removeClass("free");
       $cpuBox.addClass("cpuMove");
       $cpuBox.prepend(cpuIcon);
       $("#info").text("Player Turn Is Next");    
-
+      
       checkWin();
-      if (win === false) {        
-      turnCount++;
-      turnCount;
-      playerTurn();
-      };     
-    } else {
-       randomNumber = Math.floor(Math.random() * 8);
-       randomBox = document.getElementById(`${randomNumber}`);
-       $cpuBox = $(randomBox);  
-
-
-    }
+      turn = 1;
+      checkTurn();
+     
+     
+    } else { 
+        
+        cpuTurn();}
     
 }
 
@@ -127,16 +132,19 @@ $(document).ready(function () {
   function restart() {
     
     $(box).empty();
+    $(box).css("background-color", "#fafafa");
     $(box).removeClass("cpuMove");
     $(box).removeClass("playerMove");
+    $(box).addClass("free");
     $(selector).removeClass("active");
     $(selector).attr("aria-pressed", false);
     $(selector).attr("disabled", false);
     $(selector).css({"background-color": "#fafafa", "cursor": "pointer"});
     $(startButton).removeClass("ready");
+    $(startButton).attr("disabled", false);
     $("body").css("background-color", "#75757c");
     $("#info").text("Select A Faction And Press Start A New Game");
-    turnCount = 0;
+    turn = 0;
 
    }
 
@@ -157,99 +165,139 @@ function checkWin() {
     let box7 = $("#7");
     let box8 = $("#8");
     
-    for (turnCount > 0; turnCount <= 8;) {
-    
+       
 	if (box0.hasClass("playerMove") && box1.hasClass("playerMove") && box2.hasClass("playerMove")) {
+         box0.css("background-color", "green");
+         box1.css("background-color", "green");
+         box2.css("background-color", "green");
          $("#info").text("You Have Won! Press Restart To Play Again!");
          win = true; 
          winCount();
          
 	} else if (box0.hasClass("cpuMove") && box1.hasClass("cpuMove") && box2.hasClass("cpuMove")) {
+        box0.css("background-color", "red");
+        box1.css("background-color", "red");
+        box2.css("background-color", "red");
         $("#info").text("You Have Lost! Press Restart To Play Again!");
         win = false;
-	}
 
-	else if (box3.hasClass("playerMove") && box4.hasClass("playerMove") && box5.hasClass("playerMove")) {
-        $("#info").text("You Have Won! Press Restart To Play Again!");
-        win = true; 
-         winCount();
-	} else if (box3.hasClass("cpuMove") && box4.hasClass("cpuMove") && box5.hasClass("cpuMove")) {
-        $("#info").text("You Have Lost! Press Restart To Play Again!");
-        win = false;
-	}
-
-	else if (box6.hasClass("playerMove") && box7.hasClass("playerMove") && box8.hasClass("playerMove")) {
+	} else if (box3.hasClass("playerMove") && box4.hasClass("playerMove") && box5.hasClass("playerMove")) {
+        box3.css("background-color", "green");
+        box4.css("background-color", "green");
+        box5.css("background-color", "green");
         $("#info").text("You Have Won! Press Restart To Play Again!");
         win = true; 
         winCount();
+
+	} else if (box3.hasClass("cpuMove") && box4.hasClass("cpuMove") && box5.hasClass("cpuMove")) {
+        box3.css("background-color", "red");
+        box4.css("background-color", "red");
+        box5.css("background-color", "red");
+        $("#info").text("You Have Lost! Press Restart To Play Again!");
+        win = false;
+    
+    } else if (box6.hasClass("playerMove") && box7.hasClass("playerMove") && box8.hasClass("playerMove")) {
+        box6.css("background-color", "green");
+        box7.css("background-color", "green");
+        box8.css("background-color", "green");
+        $("#info").text("You Have Won! Press Restart To Play Again!");
+        win = true; 
+        winCount();
+
 	} else if (box6.hasClass("cpuMove") && box7.hasClass("cpuMove") && box8.hasClass("cpuMove")) {
+        box6.css("background-color", "red");
+        box7.css("background-color", "red");
+        box8.css("background-color", "red");
         $("#info").text("You Have Lost! Press Restart To Play Again!");
         win = false;
-	}
-
-	else if (box0.hasClass("playerMove") && box3.hasClass("playerMove") && box6.hasClass("playerMove")) {
+    
+    } else if (box0.hasClass("playerMove") && box3.hasClass("playerMove") && box6.hasClass("playerMove")) {
+        box0.css("background-color", "green");
+        box3.css("background-color", "green");
+        box6.css("background-color", "green");
         $("#info").text("You Have Won! Press Restart To Play Again!");
         win = true; 
          winCount();
+
 	} else if (box0.hasClass("cpuMove") && box3.hasClass("cpuMove") && box6.hasClass("cpuMove")) {
+        box0.css("background-color", "red");
+        box3.css("background-color", "red");
+        box6.css("background-color", "red");
         $("#info").text("You Have Lost! Press Restart To Play Again!");
         win = false;
-	}
-
-	else if (box4.hasClass("playerMove") && box1.hasClass("playerMove") && box7.hasClass("playerMove")) {
+    
+    } else if (box4.hasClass("playerMove") && box1.hasClass("playerMove") && box7.hasClass("playerMove")) {
+        box4.css("background-color", "green");
+        box1.css("background-color", "green");
+        box7.css("background-color", "green");
         $("#info").text("You Have Won! Press Restart To Play Again!");
         win = true; 
          winCount();
+
 	} else if (box4.hasClass("cpuMove") && box1.hasClass("cpuMove") && box7.hasClass("cpuMove")) {
+        box4.css("background-color", "red");
+        box1.css("background-color", "red");
+        box7.css("background-color", "red");
         $("#info").text("You Have Lost! Press Restart To Play Again!");
         win = false;
-	}
-
-	else if (box5.hasClass("playerMove") && box8.hasClass("playerMove") && box2.hasClass("playerMove")) {
+    
+    } else if (box5.hasClass("playerMove") && box8.hasClass("playerMove") && box2.hasClass("playerMove")) {
+        box5.css("background-color", "green");
+        box8.css("background-color", "green");
+        box2.css("background-color", "green");
         $("#info").text("You Have Won! Press Restart To Play Again!");
         win = true; 
-         winCount();
+        winCount();
+
 	} else if (box5.hasClass("cpuMove") && box8.hasClass("cpuMove") && box2.hasClass("cpuMove")) {
+        box5.css("background-color", "red");
+        box8.css("background-color", "red");
+        box2.css("background-color", "red");
         $("#info").text("You Have Lost! Press Restart To Play Again!");
         win = false;
-	}
 
-	else if (box0.hasClass("playerMove") && box4.hasClass("playerMove") && box8.hasClass("playerMove")) {
+	} else if (box0.hasClass("playerMove") && box4.hasClass("playerMove") && box8.hasClass("playerMove")) {
+        box0.css("background-color", "green");
+        box4.css("background-color", "green");
+        box8.css("background-color", "green");
         $("#info").text("You Have Won! Press Restart To Play Again!");
         win = true; 
-         winCount();
+        winCount();
+
 	} else if (box0.hasClass("cpuMove") && box4.hasClass("cpuMove") && box8.hasClass("cpuMove")) {
+        box0.css("background-color", "red");
+        box4.css("background-color", "red");
+        box8.css("background-color", "red");
         $("#info").text("You Have Lost! Press Restart To Play Again!");
         win = false;
-	}
-	
-	else if (box4.hasClass("playerMove") && box6.hasClass("playerMove") && box2.hasClass("playerMove")) {
+
+	} else if (box4.hasClass("playerMove") && box6.hasClass("playerMove") && box2.hasClass("playerMove")) {
+        box4.css("background-color", "green");
+        box6.css("background-color", "green");
+        box2.css("background-color", "green");
         $("#info").text("You Have Won! Press Restart To Play Again!");
         win = true; 
-         winCount();
+        winCount();
+
 	} else if (box4.hasClass("cpuMove") && box6.hasClass("cpuMove") && box2.hasClass("cpuMove")) {
+        box4.css("background-color", "red");
+        box6.css("background-color", "red");
+        box2.css("background-color", "red");
         $("#info").text("You Have Lost! Press Restart To Play Again!");
         win = false;
-	} else if (turnCount === 1 || turnCount === 3 || turnCount === 5 || turnCount === 7) {
-        win = false; 
-        continue;
-    }  else if (turnCount === 2 || turnCount === 4 || turnCount === 6 ) {
-        win = false; 
-        continue;
-    }  else if ( turnCount > 8) {
-        $("#info").text("It's A Draw! Press Restart To Play Again!");
-    }   
-      
+
+    }       
     }
 
 function winCount() {
     
-    if (win === true) {
+    if (win == true) {
         score++;
         score;
+        return;
     }
 }
 
-}
+
 })
 
