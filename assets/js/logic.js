@@ -294,7 +294,7 @@ function winCount() {
     if (win == true) {
         scoreIncr = parseInt(score + 1);
         $("#score").attr("value", `${scoreIncr}`)
-        $("#score").text(`${score}`);
+        $("#score").text(`${scoreIncr}`);
         
     }
 }
