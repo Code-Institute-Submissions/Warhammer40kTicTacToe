@@ -2,7 +2,7 @@ $(document).ready(function () {
   let playerIcon;
   let cpuIcon;
   let win = false;
-  let score = $("#score");
+  let score = $("#score").val();
   var turn = 0;
   var boxValid = false;
   var startButton = $(".newgame");
@@ -292,9 +292,10 @@ function checkWin() {
 function winCount() {
     
     if (win == true) {
-        score++;
-        score;
-        return;
+        scoreIncr = parseInt(score + 1);
+        $("#score").attr("value", `${scoreIncr}`)
+        $("#score").text(`${score}`);
+        
     }
 }
 
