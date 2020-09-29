@@ -2,9 +2,11 @@ $(document).ready(function () {
   let playerIcon;
   let cpuIcon;
   let win;
-  let score = $("#score").val();
+  let score = 0;
   let turn = 0;
-  let boxValid = false;
+  let boxValid;
+  let scoreCounter = document.getElementById("score");
+  let freeBoxes = document.querySelectorAll(".free");
   let startButton = $(".newgame");
   let selector = document.querySelectorAll(".select");
   const box = document.querySelectorAll(".box");
@@ -13,7 +15,7 @@ $(document).ready(function () {
   $(selector).on("click", function (e) {
     $(`.select:not(#${e.target.id})`).attr("disabled", true).css({"cursor": "not-allowed", "background-color": "lightgray"});
     startButton.addClass("ready");
-   
+    startButton.css("cursor","pointer");
     let factionColor = e.target.dataset.color;
 
     $(this).css("background-color", factionColor).attr("aria-pressed", true);
@@ -37,7 +39,7 @@ $(document).ready(function () {
 
     iconArray.splice(iconIndex, 1);
     
-    let newArrayLength = iconArray.length;
+    let newArrayLength = parseInt(iconArray.length);
        
     let randomSelect = Math.floor(Math.random() * newArrayLength); 
   
@@ -59,25 +61,25 @@ $(document).ready(function () {
 
   function validateBox(box) {
       
-    if ($(box).hasClass("free") && $(box).not(".playerMove") && $(box).not(".cpuMove")) {
+    if ($(box).hasClass("free")) {
       boxValid = true;
        
-    } else if ($(box).hasClass("playerMove") || $(box).hasClass("cpuMove")) {
-      
+    } else {
+      boxValid = false;
+
       $(this).css("background-color", "red"); 
         setTimeout(function() { 
             $(this).css("background-color", "white"); 
         }, 800);
-      return boxValid;
+       
       
-      playerTurn();
-    } 
+      } 
 }
   
   function checkTurn() {
-      if (turn > 0 && turn === 1) {
+      if (turn === 1) {
         playerTurn();
-     } else if (turn > 0 && turn === 2) {
+     } else if (turn === 2) {
         cpuTurn();
       }
   }
@@ -88,17 +90,16 @@ $(document).ready(function () {
     
     validateBox(this);
 
-    if (boxValid === true && turn === 1) {
+    if (boxValid === true) {
       $(this).removeClass("free");
       $(this).addClass("playerMove");
       $(this).prepend(playerIcon);
       turn = 2;
       checkWin();
-      
-      
-            
-      
-    } 
+          
+    } else {
+       return false;
+    }
   });
 }
 
@@ -112,7 +113,7 @@ $(document).ready(function () {
     
     validateBox($cpuBox[0]);
 
-    if (boxValid === true && turn === 2) {
+    if (boxValid === true) {
       $cpuBox.removeClass("free");
       $cpuBox.addClass("cpuMove");
       $cpuBox.prepend(cpuIcon);
@@ -122,9 +123,10 @@ $(document).ready(function () {
       checkWin();
           
      
-    } else if (boxValid === false && turn === 2) { 
+    } else if (boxValid === false) { 
         
-        cpuTurn();}
+        cpuTurn();
+    }
     
 }
 
@@ -142,6 +144,7 @@ $(document).ready(function () {
     $(selector).css({"background-color": "#fafafa", "cursor": "pointer"});
     $(startButton).removeClass("ready");
     $(startButton).attr("disabled", false);
+    $(startButton).css("cursor", "arrow");
     $("body").css("background-color", "#75757c");
     $("#info").text("Select A Faction And Press Start A New Game");
     turn = 0;
@@ -318,16 +321,17 @@ function checkWin() {
         win = false;
         gameEnd();
 
-    } else checkDraw();
+    } else {
+        checkDraw();
+    }
     }
 
 function checkDraw() {
+      
+    let boxesArray = Array.from(freeBoxes);
+    let boxesArrayLength = parseInt(boxesArray.length);
 
-    let freeBoxes = $(box).hasClass("free");
-    let boxesArray = [freeBoxes];
-    let arrayLength = boxesArray.length;
-
-    if (arrayLength == 0 && boxValid === false) {
+    if (boxesArrayLength === 0) {
 
         $("#info").text("It's A Draw. Press Restart To Play Again!");
         win = false;
@@ -348,10 +352,9 @@ function gameEnd() {
 function winCount() {
     
     if (win === true) {
-        debugger;
-        scoreIncr = parseInt(score + 1);
-        $("#score").attr("value", `${scoreIncr}`)
-        $("#score").text(`${scoreIncr}`);
+       
+        score++;
+        scoreCounter.innerHTML = score;
         
     }
 }
