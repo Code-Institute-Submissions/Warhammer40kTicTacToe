@@ -49,6 +49,90 @@
     <div class="row container-fluid main text-center">
       <!--Faction Select & New Game-->
 
+        <div class="col dropdown dropdown-faction">
+        <div  class="navbar-nav text-center">
+         
+            <button onclick="dropDown()" class="dropbtn">Select Your Faction:</button>
+          
+
+         <div id="dropdown-content">
+            <button
+                data-color="blue"
+                type="button"
+                id="aa"
+                class="btn btn-primary select"
+                data-toggle="button"
+                aria-pressed="false"
+                autocomplete="off"
+              >
+                <img src="assets/images/aalogo.png" alt="aa_logo" />
+                <h6 class="fname">Adeptus Astartes</h6>
+              </button>
+
+            <button
+                data-color="red"
+                type="button"
+                id="cha"
+                class="btn btn-primary select"
+                data-toggle="button"
+                aria-pressed="false"
+                autocomplete="off"
+              >
+                <img src="assets/images/chalogo.png" alt="cha_logo" />
+                <h6 class="fname">Chaos</h6>
+              </button>
+          
+            <button
+                data-color="gold"
+                type="button"
+                id="eld"
+                class="btn btn-primary select"
+                data-toggle="button"
+                aria-pressed="false"
+                autocomplete="off"
+              >
+                <img src="assets/images/eldlogo.png" alt="eld_logo" />
+                <h6 class="fname">Aeldari</h6>
+              </button>
+          
+            <button
+                data-color="yellowgreen"
+                type="button"
+                id="nec"
+                class="btn btn-primary select"
+                data-toggle="button"
+                aria-pressed="false"
+                autocomplete="off"
+              >
+                <img src="assets/images/neclogo.png" alt="nec_logo" />
+                <h6 class="fname">Necrons</h6>
+              </button>
+          
+
+         
+            <button
+                data-color="orange"
+                type="button"
+                id="tau"
+                class="btn btn-primary select"
+                data-toggle="button"
+                aria-pressed="false"
+                autocomplete="off"
+              >
+                <img src="assets/images/taulogo.png" alt="tau_logo" />
+                <h6 class="fname">T'au Empire</h6>
+              </button>
+          
+          
+            <input
+                type="button"
+                class="btn btn-success newgame"
+                value="Start A New Game"                
+            />
+          </div>
+        </div>
+      </div>   
+
       <div class="col faction">
         <ul class="navbar-nav text-center">
           <li>

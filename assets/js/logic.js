@@ -11,6 +11,23 @@ $(document).ready(function () {
   let selector = document.querySelectorAll(".select");
   const box = document.querySelectorAll(".box");
  
+function dropDown() {
+  document.getElementById("dropdown-content").classList.toggle("show");
+}
+
+
+window.onclick = function(event) {
+  if (!event.target.matches(".dropbtn")) {
+    let dropdowns = document.getElementsById("dropdown-content");
+    let i;
+    for (i = 0; i < dropdowns.length; i++) {
+      let openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains("show")) {
+        openDropdown.classList.remove("show");
+      }
+    }
+  }
+}
 
   $(selector).on("click", function (e) {
     $(`.select:not(#${e.target.id})`).attr("disabled", true).css({"cursor": "not-allowed", "background-color": "lightgray"});

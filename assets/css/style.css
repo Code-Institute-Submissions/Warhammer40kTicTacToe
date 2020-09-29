@@ -23,7 +23,8 @@ h5 {
 }
 
 .factiontext,
-.fname {
+.fname,
+.dropbtn {
   color: black;
 }
 
@@ -69,7 +70,7 @@ body {
 }
 
 .head img {
-    width: 320px;
+ width: 320px;
 }
 
 .infocontainer {
@@ -106,9 +107,12 @@ body {
   border: 0;
 }
 .faction {
-    order: 1; 
+    display: none;
 }
 
+.dropdown {
+    order: 1;
+}
 .scorecount {
     order: 2;
     margin: 0 auto;
@@ -139,10 +143,10 @@ table {
   display: table;
 }
 
-/*--------------------------Faction Select*/
+/*--------------------------Faction Select & Dropbown*/
 
 
-.select {
+.select, #dropdown-content.select {  
   width: 200px;
   background-color: transparent;
   border: 0;
@@ -157,12 +161,36 @@ table {
     box-shadow: none;
  }
 
+.dropbtn {
+  padding-top: 0.5vh;
+  width: 200px;
+  height: 50px;
+  background-color: transparent;
+  border: 0;
+  outline: 0; 
+  margin: 0 auto;
+  font-family: "Cormorant SC",sans-serif; 
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: rgb(41, 185, 53);
+  
+}
+
+#dropdown-content {
+   display: none;
+}
+
+.show {
+    display:block;
+}
+
 .factiontext {
     padding-top: 0.5vh;
 }
 
 .navbar-nav {
-  background-color: #fafafa;
+  
   width: 320px;
   height: 580px;
   margin: 0 auto;
@@ -170,7 +198,7 @@ table {
   justify-content: space-evenly;
 }
 
-.navbar-nav li img {
+.navbar-nav li img, .navbar-nav #dropdown-content img {
   height: 40px;
   width: 40px;
   margin: 0;
@@ -193,26 +221,26 @@ table {
     
 }
 
-#aa:hover {
+#aa:hover, #aa:focus {
    background-color: blue;
   
    
 }
 
-#cha:hover {
+#cha:hover, #cha:focus {
     background-color: red;
     
 }
 
-#eld:hover {
+#eld:hover, #eld:focus {
     background-color: gold;
 }
 
-#nec:hover {
+#nec:hover, #nec:focus {
     background-color: yellowgreen;
 }
 
-#tau:hover {
+#tau:hover, #tau:focus {
     background-color: orange;
 }
 
@@ -245,6 +273,7 @@ table {
   margin-top: 3em;
   padding: 0;
   border: 0;
+  bottom: 0;
   color: #fafafa;
 }
 
@@ -257,9 +286,14 @@ table {
   .head img {
       width: 450px;
   }
+ 
+ .dropdown {
+     display: none;
+ }
 
-   .faction {
-     order: 1; 
+.faction {
+     order: 1;
+     display: block; 
  }
  
  .board {
