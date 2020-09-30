@@ -49,18 +49,20 @@
     <div class="row container-fluid main text-center">
       <!--Faction Select & New Game-->
 
-        <div class="col dropdown dropdown-faction">
-        <div  class="navbar-nav text-center">
+        <!---Dropdown Menu For Mobile-->
+
+        <div class="col dropdown-faction">
+        <div  class="navbar text-center">
          
-            <button onclick="dropDown()" class="dropbtn">Select Your Faction:</button>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">Select Your Faction</button>
           
 
-         <div id="dropdown-content">
+         <div id="navbar" class="navbar-collapse collapse" aria-labelledby="selectButton">
             <button
                 data-color="blue"
                 type="button"
                 id="aa"
-                class="btn btn-primary select"
+                class="btn select"
                 data-toggle="button"
                 aria-pressed="false"
                 autocomplete="off"
@@ -73,7 +75,7 @@
                 data-color="red"
                 type="button"
                 id="cha"
-                class="btn btn-primary select"
+                class="btn select"
                 data-toggle="button"
                 aria-pressed="false"
                 autocomplete="off"
@@ -86,7 +88,7 @@
                 data-color="gold"
                 type="button"
                 id="eld"
-                class="btn btn-primary select"
+                class="btn select"
                 data-toggle="button"
                 aria-pressed="false"
                 autocomplete="off"
@@ -99,7 +101,7 @@
                 data-color="yellowgreen"
                 type="button"
                 id="nec"
-                class="btn btn-primary select"
+                class="btn select"
                 data-toggle="button"
                 aria-pressed="false"
                 autocomplete="off"
@@ -114,7 +116,7 @@
                 data-color="orange"
                 type="button"
                 id="tau"
-                class="btn btn-primary select"
+                class="btn select"
                 data-toggle="button"
                 aria-pressed="false"
                 autocomplete="off"
@@ -124,19 +126,21 @@
               </button>
           
           
-            <input
+            <button
                 type="button"
-                class="btn btn-success newgame"
-                value="Start A New Game"                
-            />
+                class="btn btn-success newgame">Start A New Game</button>
           </div>
         </div>
       </div>   
 
+      <!--/dropdown menu for mobile-->
+      
+      <!--Menu for larger screens-->
+
       <div class="col faction">
-        <ul class="navbar-nav text-center">
+        <ul class="navbar text-center">
           <li>
-            <h5 class="factiontext">Select Your Faction:</h5>
+            <h5 class="factiontext">Select Your Faction</h5>
           </li>
 
           <li>
@@ -223,7 +227,11 @@
           </li>
         </ul>
       </div>
+
+      <!--/menu for larger screens-->
+
       <!--/faction select & new game-->
+
 
       <!--Board-->
 
@@ -266,6 +274,7 @@
         </table>
         <br />
         <br />
+
         <!--Restart-->
 
         <input
@@ -284,7 +293,7 @@
       <div class="col scorecount">
         <div class="container-fluid scoreboard text-center">
           <p class="wins">
-            Wins:
+            Wins
           </p>
           <span id="score" value="0">0</span>
         </div>
@@ -296,7 +305,8 @@
 
     <div class="container-fluid footer text-center">
       <span class="fnotes"
-        >All names and logos &#169; &#174; Games Workshop Ltd.</span
+        >All names and logos &#169; Games Workshop Limited <br>
+        This app is in no way endorsed by Games Workshop</span
       >
       <br />
       <span class="fnotes"

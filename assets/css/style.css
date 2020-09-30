@@ -1,20 +1,33 @@
-/*--------------------------Fonts*/
+/*--------------------------Fonts & Colors*/
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500&display=swap");
 
 h3,
 h5,
-h6 {
+h6,
+.newgame,
+#restart,
+.navbar-toggle,
+#score,
+.wins
+ {
   font-family: "Cormorant SC", sans-serif;
+  
+}
+
+h3,
+h5,
+h6,
+#restart,
+.navbar-toggle,
+#score,
+.wins
+ {
   color: #fafafa;
 }
 
-#score,
-.wins {
-  font-family: "Cormorant SC", sans-serif;
-  color: black;
-}
 
-h3 {
+
+h3, #restart {
   font-size: 30px;
 }
 
@@ -24,31 +37,16 @@ h5 {
 
 .factiontext,
 .fname,
-.dropbtn {
+.navbar-toggle
+ {
   color: black;
 }
 
-.navbar-nav li a {
+.navbar li a {
   font-size: 30px;
 }
 
-.wins {
-  font-size: 35px;
-  height: min-content;
-  width: min-content;
-  margin: 0 auto; 
-  padding-top: 70px;
-}
 
-
-
-#score {
-  font-size: 90px;
-  height: 95px;
-  width: min-content;
-  margin: 0 auto;
-  margin-bottom: 70px;
-}
 
 /*--------------------------Body*/
 body {
@@ -80,6 +78,8 @@ body {
 
 /*--------------------------Info Line*/
 #info {
+  width: 310px;
+  margin: 0 auto;
   margin-top: 50px;
 }
 
@@ -88,14 +88,25 @@ body {
 .scoreboard {
     width: 320px;
     margin: 0 auto;
-    background-color: #fafafa;
-    height: 320px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-evenly;
     padding: 0;
 }
+
+.wins,
+#score {
+  font-size: 35px;
+  
+ 
 }
+
+#score {
+ margin: 0; 
+ margin-left: -80px;
+  
+}
+
 
 /*--------------------------Main Container*/
 .main { 
@@ -106,16 +117,16 @@ body {
   padding: 0;
   border: 0;
 }
+
 .faction {
     display: none;
 }
 
-.dropdown {
+.dropdown-faction {
     order: 1;
 }
 .scorecount {
     order: 2;
-    margin: 0 auto;
     margin-top: 20px;
 }
 
@@ -146,59 +157,66 @@ table {
 /*--------------------------Faction Select & Dropbown*/
 
 
-.select, #dropdown-content.select {  
-  width: 200px;
+.select,
+#navbar.select {  
+  width: 310px;
   background-color: transparent;
   border: 0;
+  margin: 0;
+  margin-bottom: 20px;
+  padding: 0;
+  height: 65px;   
 }
 
 .btn-primary:focus, 
 .btn-primary.focus,
 .btn-primary:not(:disabled):not(.disabled):active:focus,
 .btn-primary:not(:disabled):not(.disabled).active.focus,
-.show>.btn-primary.dropdown-toggle:focus
+.show>.btn-primary.dropdown-toggle:focus,
+.btn:focus, 
+.btn.focus,
+.btn:not(:disabled):not(.disabled):active:focus,
+.btn:not(:disabled):not(.disabled).active.focus,
+.show>.btn.dropdown-toggle:focus
  {
     box-shadow: none;
  }
 
-.dropbtn {
+.navbar-toggle {
   padding-top: 0.5vh;
-  width: 200px;
+  width: 310px;
   height: 50px;
-  background-color: transparent;
+  background: #fafafa;
   border: 0;
+  border-radius: 2px;
   outline: 0; 
   margin: 0 auto;
-  font-family: "Cormorant SC",sans-serif; 
 }
 
-.dropbtn:hover, .dropbtn:focus {
-  background-color: rgb(41, 185, 53);
-  
+.navbar-toggle:focus, 
+.navbar-toggle.focus, 
+.navbar-toggle:not(:disabled):not(.disabled):active:focus, 
+.navbar-toggle:not(:disabled):not(.disabled).active.focus {
+ width: 310px;
+ outline: 1px lightgrey;
+
 }
 
-#dropdown-content {
-   display: none;
-}
-
-.show {
-    display:block;
-}
 
 .factiontext {
     padding-top: 0.5vh;
 }
 
-.navbar-nav {
-  
+.navbar {
   width: 320px;
-  height: 580px;
+  background-color: #fafafa;
   margin: 0 auto;
   margin-top: 20px;
   justify-content: space-evenly;
+  list-style: none;
 }
 
-.navbar-nav li img, .navbar-nav #dropdown-content img {
+.navbar li img, #navbar img {
   height: 40px;
   width: 40px;
   margin: 0;
@@ -206,19 +224,9 @@ table {
   padding: 0;
 }
 
-.navbar-nav li h6 {
+.navbar li h6, #navbar h6 {
   margin: 0;
   margin-top: 8px;
-}
-
-#aa, #cha, #eld, #nec, #tau,
-#aa::before, #cha::before, #eld::before, #nec::before, #tau::before,
-#aa::after, #cha::after, #eld::after, #nec::after, #tau::after {
-    border: 0;
-    margin: 0;
-    padding: 0;
-    height: 85px;    
-    
 }
 
 #aa:hover, #aa:focus {
@@ -246,7 +254,8 @@ table {
 
 .newgame {
     width: 200px;
-    
+    margin: 0 auto;
+    background-color: lightgreen;
 }
 
 
@@ -257,15 +266,14 @@ table {
     height:85%;
 }
 
+
 /*--------------------------Restart*/
 #restart {
-  width: 300px;
-  margin: 0 auto;
+    width: 310px;
+    margin: 0 auto;
+    margin-left: 20px;
 }
 
-#restart:hover {
-  opacity: 0.8;
-}
 
 /*--------------------------Footer*/
 .footer {
@@ -277,25 +285,51 @@ table {
   color: #fafafa;
 }
 
+.fnotes {
+    font-size: 12px;
+}
 /*--------------------------Media Queries*/
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 540px) {
+    #restart {
+        margin: 0 auto;
+    }
+}
+@media screen and (min-width: 1159px) {
   .main {
     flex-direction: row;
   }
 
   .head img {
       width: 450px;
+      margin-top: 20px;
+  }
+  
+  .infocontainer {
+    margin-top: 25px;
+    margin-bottom: -30px;
+  }
+  #info {
+      margin-top: 70px;
+  }
+
+  .select {
+      width: 200px;
   }
  
- .dropdown {
+ .dropdown-faction {
      display: none;
  }
 
 .faction {
      order: 1;
      display: block; 
- }
- 
+    
+}
+
+.navbar {
+    
+     height: 580px;
+}
  .board {
      order: 2;
  }
@@ -303,6 +337,25 @@ table {
 .scorecount {
      order: 3;
  }
+
+ .scoreboard {
+    background-color: #fafafa;
+    height: 320px;
+    margin-top: 20px;
+    flex-direction: column;
+    
+ }
+#score,
+.wins {
+  color: black;
+}
+
+ #score {
+    font-size: 75px;
+    margin-left: 0; 
+    margin-top: -115px;
+  
+}
 
  .faction, .board, .scorecount {
   margin: 0 auto;
@@ -318,5 +371,9 @@ table {
   width: 380px;
   padding: 10px;
   margin: 0 auto;
+}
+
+.fnotes {
+    font-size: 15px;
 }
 }

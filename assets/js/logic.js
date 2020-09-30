@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    
   let playerIcon;
   let cpuIcon;
   let win;
@@ -6,33 +7,16 @@ $(document).ready(function () {
   let turn = 0;
   let boxValid;
   let scoreCounter = document.getElementById("score");
-  let freeBoxes = document.querySelectorAll(".free");
   let startButton = $(".newgame");
   let selector = document.querySelectorAll(".select");
   const box = document.querySelectorAll(".box");
- 
-function dropDown() {
-  document.getElementById("dropdown-content").classList.toggle("show");
-}
 
 
-window.onclick = function(event) {
-  if (!event.target.matches(".dropbtn")) {
-    let dropdowns = document.getElementsById("dropdown-content");
-    let i;
-    for (i = 0; i < dropdowns.length; i++) {
-      let openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains("show")) {
-        openDropdown.classList.remove("show");
-      }
-    }
-  }
-}
-
-  $(selector).on("click", function (e) {
+  $(selector).on("click", function(e) {
     $(`.select:not(#${e.target.id})`).attr("disabled", true).css({"cursor": "not-allowed", "background-color": "lightgray"});
     startButton.addClass("ready");
-    startButton.css("cursor","pointer");
+    startButton.css({"cursor":"pointer", "background-color":"green"});
+    
     let factionColor = e.target.dataset.color;
 
     $(this).css("background-color", factionColor).attr("aria-pressed", true);
@@ -69,6 +53,7 @@ window.onclick = function(event) {
       $(box).css("cursor", "pointer");    
       $(this).attr("disabled", true).css("cursor", "not-allowed");
       $("#restart").attr("disabled", false);
+      $("#navbar").removeClass("show");
       $("#info").text("Player Turn");
       turn = 1;
       checkTurn();
@@ -162,6 +147,7 @@ window.onclick = function(event) {
     $(startButton).removeClass("ready");
     $(startButton).attr("disabled", false);
     $(startButton).css("cursor", "arrow");
+    $(".navbar-toggle").attr("aria-expanded", true);
     $("body").css("background-color", "#75757c");
     $("#info").text("Select A Faction And Press Start A New Game");
     turn = 0;
@@ -344,13 +330,15 @@ function checkWin() {
     }
 
 function checkDraw() {
-      
-    let boxesArray = Array.from(freeBoxes);
-    let boxesArrayLength = parseInt(boxesArray.length);
 
-    if (boxesArrayLength === 0) {
+    let freeBoxes = document.querySelectorAll(".free");  
+    let boxesTotal = freeBoxes.length;
+    
+
+    if (boxesTotal === 0) {
 
         $("#info").text("It's A Draw. Press Restart To Play Again!");
+        $(box).css("background-color", "lightgray");
         win = false;
         gameEnd();
     } else {
