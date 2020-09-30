@@ -4,8 +4,8 @@ $(document).ready(function () {
   let cpuIcon;
   let win;
   let score = 0;
-  let turn = 0;
-  let boxValid;
+  let turn;
+  let boxValid = false;
   let scoreCounter = document.getElementById("score");
   let startButton = $(".newgame");
   let selector = document.querySelectorAll(".select");
@@ -64,18 +64,15 @@ $(document).ready(function () {
   function validateBox(box) {
       
     if ($(box).hasClass("free")) {
+      
       boxValid = true;
        
-    } else {
-      boxValid = false;
+    } else if (!$(box).hasClass("free")) {
 
-      $(this).css("background-color", "red"); 
-        setTimeout(function() { 
-            $(this).css("background-color", "white"); 
-        }, 800);
-       
+      boxValid = false;
       
-      } 
+     
+     } 
 }
   
   function checkTurn() {
@@ -88,19 +85,26 @@ $(document).ready(function () {
 
   function playerTurn() {
         
-    $(box).on("click", function () {
+    $(box).on("click", function (e) {
     
-    validateBox(this);
+    validateBox(e.target);
 
-    if (boxValid === true) {
+    if (boxValid == true) {
       $(this).removeClass("free");
       $(this).addClass("playerMove");
       $(this).prepend(playerIcon);
       turn = 2;
+      e.stopPropagation();
       checkWin();
           
-    } else {
-       return false;
+    } else if (boxValid == false) {
+
+           
+       $(this).effect("highlight", {color: "#red"}, 2000);
+
+       $("#info").text("Invalid Move!");
+
+       checktTurn();
     }
   });
 }
@@ -119,13 +123,13 @@ $(document).ready(function () {
       $cpuBox.removeClass("free");
       $cpuBox.addClass("cpuMove");
       $cpuBox.prepend(cpuIcon);
-      $("#info").text("Player Turn Is Next");    
+      $("#info").text("Player Turn");    
       
       turn = 1;
       checkWin();
           
      
-    } else if (boxValid === false) { 
+    } else if (boxValid == false) { 
         
         cpuTurn();
     }
@@ -147,11 +151,11 @@ $(document).ready(function () {
     $(startButton).removeClass("ready");
     $(startButton).attr("disabled", false);
     $(startButton).css("cursor", "arrow");
-    $(".navbar-toggle").attr("aria-expanded", true);
+    $("#navbar").addClass("show");
     $("body").css("background-color", "#75757c");
     $("#info").text("Select A Faction And Press Start A New Game");
-    turn = 0;
-
+    
+    turn = 0; 
    }
 
   $("#restart").on("click", function () {
@@ -350,7 +354,7 @@ function gameEnd() {
     if (win === true || win === false) {
         $(box).removeClass("free");
         $(box).css("cursor", "not-allowed");
-        turn = 0;
+       
     }
 }
 
