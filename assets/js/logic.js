@@ -15,6 +15,8 @@ $(document).ready(function () {
   $(selector).on("click", function(e) {
     $(`.select:not(#${e.target.id})`).attr("disabled", true).css({"cursor": "not-allowed", "background-color": "lightgray"});
     startButton.addClass("ready");
+    startButton.attr("disabled", false);
+    startButton.attr("aria-pressed", false);
     startButton.css({"cursor":"pointer", "background-color":"green"});
     
     let factionColor = e.target.dataset.color;
@@ -50,9 +52,11 @@ $(document).ready(function () {
 
   $(startButton).on("click", function () {
     if ($(this).hasClass("ready")) {
+      $(box).addClass("free");
       $(box).css("cursor", "pointer");    
-      $(this).attr("disabled", true).css("cursor", "not-allowed");
-      $("#restart").attr("disabled", false);
+      $(this).attr("disabled", true);
+      $(this).css("cursor", "not-allowed");
+      $("#restart").attr("disabled", true);
       $("#navbar").removeClass("show");
       $("#info").text("Player Turn");
       turn = 1;
@@ -61,24 +65,22 @@ $(document).ready(function () {
   });
 
 
-  function validateBox(box) {
+function validateBox(box) {
       
-    if ($(box).hasClass("free")) {
+   if ($(box).hasClass("free")) {
       
-      boxValid = true;
+   boxValid = true;
        
-    } else if (!$(box).hasClass("free")) {
+   } else {
 
-      boxValid = false;
-      
-     
-     } 
+     boxValid = false;
+   } 
 }
   
   function checkTurn() {
       if (turn === 1) {
         playerTurn();
-     } else if (turn === 2) {
+     } else {
         cpuTurn();
       }
   }
@@ -89,31 +91,39 @@ $(document).ready(function () {
     
     validateBox(e.target);
 
-    if (boxValid == true) {
+    if (boxValid === true) {
       $(this).removeClass("free");
       $(this).addClass("playerMove");
       $(this).prepend(playerIcon);
       turn = 2;
-      e.stopPropagation();
+      
       checkWin();
           
-    } else if (boxValid == false) {
+    }  else {
 
-           
-       $(this).effect("highlight", {color: "#red"}, 2000);
+        $(this).css("background-color", "red");
+        setTimeout(function(){
+            $(this).css("background-color", "white");
+        }, 500);
 
        $("#info").text("Invalid Move!");
+       setTimeout(function(){
+           $("#info").text("Player Turn")
+       }, 500);
 
-       checktTurn();
+       checkTurn();
+
+        
     }
-  });
+ 
+});
 }
-
-  function cpuTurn() {
+ 
+function cpuTurn() {
     
     let randomNumber = Math.floor(Math.random() * 8);
     
-   let randomBox = document.getElementById(`${randomNumber}`);   
+    let randomBox = document.getElementById(`${randomNumber}`);   
 
     let $cpuBox = $(randomBox);
     
@@ -129,7 +139,7 @@ $(document).ready(function () {
       checkWin();
           
      
-    } else if (boxValid == false) { 
+    } else { 
         
         cpuTurn();
     }
@@ -143,13 +153,13 @@ $(document).ready(function () {
     $(box).css("background-color", "#fafafa");
     $(box).removeClass("cpuMove");
     $(box).removeClass("playerMove");
-    $(box).addClass("free");
+    $(box).removeClass("free");
     $(selector).removeClass("active");
-    $(selector).attr("aria-pressed", false);
-    $(selector).attr("disabled", false);
+    $(selector).attr("aria-pressed", "false");
+    $(selector).attr("disabled", "false");
     $(selector).css({"background-color": "#fafafa", "cursor": "pointer"});
     $(startButton).removeClass("ready");
-    $(startButton).attr("disabled", false);
+    $(startButton).attr("disabled", "true");
     $(startButton).css("cursor", "arrow");
     $("#navbar").addClass("show");
     $("body").css("background-color", "#75757c");
@@ -160,7 +170,7 @@ $(document).ready(function () {
 
   $("#restart").on("click", function () {
     restart();
-    $(this).attr("disabled", true);
+    $(this).attr("disabled", "true");
   });
 
 function checkWin() {
@@ -351,11 +361,10 @@ function checkDraw() {
 }
 
 function gameEnd() {
-    if (win === true || win === false) {
+    
         $(box).removeClass("free");
         $(box).css("cursor", "not-allowed");
-       
-    }
+        
 }
 
 function winCount() {
@@ -369,5 +378,5 @@ function winCount() {
 }
 
 
+  
 })
-
