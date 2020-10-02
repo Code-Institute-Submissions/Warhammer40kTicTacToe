@@ -4,6 +4,8 @@ $(document).ready(function () {
   let cpuIcon;
   let win;
   let turn;
+  let score = 0;
+  let scoreCounter = document.getElementById("score");
   let startButton = $(".newgame");
   let selector = $(".select");
   const box = $(".box");
@@ -358,8 +360,6 @@ function gameEnd() {
 }
 
 function winCount() {
-    let score = 0;
-    let scoreCounter = document.getElementById("score");
     
     if (win === true) {
        
