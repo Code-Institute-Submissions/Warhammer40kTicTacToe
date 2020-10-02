@@ -52,11 +52,13 @@ The app is responsive to all orientations and screen widths and was designed wit
 
 *   #### Wireframes
 
-    *   Desktop app view with the Adeptus Astartes faction selected and an invalid move flagged - <a href="https://github.com/NikolasKotsikos/Warhammer40kTicTacToe/blob/9dea49cda3bbd4daf142cebae0910e85c28593aa/assets/wireframes/Wireframe-TAU.png" target="_blank">View</a>
+    *   Desktop app view with the Adeptus Astartes faction selected and an invalid move flagged - <a href="https://github.com/NikolasKotsikos/Warhammer40kTicTacToe/blob/master/assets/wireframes/Wireframe-AA.png" target="_blank">View</a>
 
-    *   Desktop app view with the Adeptus Astartes faction selected and an invalid move flagged- [View](https://github.com/NikolasKotsikos/Warhammer40kTicTacToe/assets/wireframes/Wireframe-TAU.png)
+    *   Desktop app view with the Adeptus Astartes faction selected and an invalid move flagged- <a href="https://github.com/NikolasKotsikos/Warhammer40kTicTacToe/blob/master/assets/wireframes/Wireframe-TAU.png" target="_blank">View</a>
 
-    *   Mobile and tablet view (all sizes)- [View](https://github.com/NikolasKotsikos/Warhammer40kTicTacToe/assets/wireframes/Wireframe-Mobile.png)
+
+    *   Mobile and tablet view (all sizes)- <a href="https://github.com/NikolasKotsikos/Warhammer40kTicTacToe/blob/master/assets/wireframes/Wireframe-Mobile.png" target="_blank">View</a>
+
 
     
 
