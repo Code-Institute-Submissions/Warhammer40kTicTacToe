@@ -3,13 +3,10 @@ $(document).ready(function () {
   let playerIcon;
   let cpuIcon;
   let win;
-  let score = 0;
   let turn;
-  let boxValid = false;
-  let scoreCounter = document.getElementById("score");
   let startButton = $(".newgame");
-  let selector = document.querySelectorAll(".select");
-  const box = document.querySelectorAll(".box");
+  let selector = $(".select");
+  const box = $(".box");
 
 
   $(selector).on("click", function(e) {
@@ -53,10 +50,11 @@ $(document).ready(function () {
   $(startButton).on("click", function () {
     if ($(this).hasClass("ready")) {
       $(box).addClass("free");
-      $(box).css("cursor", "pointer");    
+      $(box).css({"cursor": "pointer", "pointer-events":"initial"});
       $(this).attr("disabled", true);
       $(this).css("cursor", "not-allowed");
-      $("#restart").attr("disabled", true);
+      $("#restart").attr("disabled", false);
+      $("#restart").attr("aria-pressed", false);
       $("#navbar").removeClass("show");
       $("#info").text("Player Turn");
       turn = 1;
@@ -65,57 +63,55 @@ $(document).ready(function () {
   });
 
 
-function validateBox(box) {
-      
-   if ($(box).hasClass("free")) {
-      
-   boxValid = true;
-       
-   } else {
-
-     boxValid = false;
-   } 
-}
-  
-  function checkTurn() {
-      if (turn === 1) {
-        playerTurn();
-     } else {
-        cpuTurn();
-      }
-  }
-
-  function playerTurn() {
+function flashBox(box) {
         
-    $(box).on("click", function (e) {
-    
-    validateBox(e.target);
-
-    if (boxValid === true) {
-      $(this).removeClass("free");
-      $(this).addClass("playerMove");
-      $(this).prepend(playerIcon);
-      turn = 2;
-      
-      checkWin();
-          
-    }  else {
-
-        $(this).css("background-color", "red");
+      $(box).css("background-color", "red");
         setTimeout(function(){
-            $(this).css("background-color", "white");
+            $(box).css("background-color", "white");
         }, 500);
 
        $("#info").text("Invalid Move!");
        setTimeout(function(){
            $("#info").text("Player Turn")
-       }, 500);
+       }, 500);      
+     
+}
 
-       checkTurn();
+function checkTurn() {
+      if (turn === 1) {
 
+        playerTurn();
+
+     } else if (turn === 2) {
+
+        cpuTurn();
+
+      };
+  }
+
+
+function playerTurn() {
         
+    $(box).off().on("click", function (e) {
+      debugger;   
+      if ($(e.target).hasClass("free")) {
+      $(this).removeClass("free");
+      $(this).addClass("playerMove");
+      $(this).prepend(playerIcon);
+
+      turn = 2;
+
+      checkDraw();
+      checkWin();
+      checkTurn();
+          
+    } else {
+
+        flashBox(this);
+        checkTurn();
     }
- 
+
+  
 });
 }
  
@@ -125,41 +121,39 @@ function cpuTurn() {
     
     let randomBox = document.getElementById(`${randomNumber}`);   
 
-    let $cpuBox = $(randomBox);
-    
-    validateBox($cpuBox[0]);
-
-    if (boxValid === true) {
-      $cpuBox.removeClass("free");
-      $cpuBox.addClass("cpuMove");
-      $cpuBox.prepend(cpuIcon);
+    if ($(randomBox).hasClass("free")) {
+     $(randomBox).removeClass("free");
+      $(randomBox).addClass("cpuMove");
+      $(randomBox).prepend(cpuIcon);
       $("#info").text("Player Turn");    
       
       turn = 1;
+
+      checkDraw();
       checkWin();
+      checkTurn();
           
      
     } else { 
         
-        cpuTurn();
+        checkTurn();
     }
     
 }
 
 
-  function restart() {
+function restart() {
     
     $(box).empty();
     $(box).css("background-color", "#fafafa");
     $(box).removeClass("cpuMove");
     $(box).removeClass("playerMove");
-    $(box).removeClass("free");
     $(selector).removeClass("active");
-    $(selector).attr("aria-pressed", "false");
-    $(selector).attr("disabled", "false");
+    $(selector).attr("aria-pressed", false);
+    $(selector).attr("disabled", false);
     $(selector).css({"background-color": "#fafafa", "cursor": "pointer"});
     $(startButton).removeClass("ready");
-    $(startButton).attr("disabled", "true");
+    $(startButton).attr("disabled", true);
     $(startButton).css("cursor", "arrow");
     $("#navbar").addClass("show");
     $("body").css("background-color", "#75757c");
@@ -170,7 +164,7 @@ function cpuTurn() {
 
   $("#restart").on("click", function () {
     restart();
-    $(this).attr("disabled", "true");
+    $(this).attr("disabled", true);
   });
 
 function checkWin() {
@@ -338,15 +332,13 @@ function checkWin() {
         win = false;
         gameEnd();
 
-    } else {
-        checkDraw();
-    }
+    } 
     }
 
 function checkDraw() {
 
     let freeBoxes = document.querySelectorAll(".free");  
-    let boxesTotal = freeBoxes.length;
+    let boxesTotal = parseInt(freeBoxes.length);
     
 
     if (boxesTotal === 0) {
@@ -355,19 +347,19 @@ function checkDraw() {
         $(box).css("background-color", "lightgray");
         win = false;
         gameEnd();
-    } else {
-        checkTurn();
-    }
+    } 
 }
 
 function gameEnd() {
     
         $(box).removeClass("free");
-        $(box).css("cursor", "not-allowed");
+        $(box).css({"cursor": "not-allowed", "pointer-events": "none"});
         
 }
 
 function winCount() {
+    let score = 0;
+    let scoreCounter = document.getElementById("score");
     
     if (win === true) {
        
