@@ -8,22 +8,13 @@ h6,
 #restart,
 .navbar-toggle,
 #score,
-.wins
+.wins,
+.fnotes
  {
   font-family: "Cormorant SC", sans-serif;
-  
-}
-
-h3,
-h5,
-h6,
-#restart,
-.navbar-toggle,
-#score,
-.wins
- {
   color: #fafafa;
 }
+
 
 
 

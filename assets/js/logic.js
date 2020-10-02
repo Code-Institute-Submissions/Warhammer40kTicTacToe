@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    
+
+// Global variables anc constants
   let playerIcon;
   let cpuIcon;
   let win;
@@ -10,7 +11,7 @@ $(document).ready(function () {
   let selector = $(".select");
   const box = $(".box");
 
-
+// Faction select event listener and randomized function for selecting the cpu icon
   $(selector).on("click", function(e) {
     $(`.select:not(#${e.target.id})`).attr("disabled", true).css({"cursor": "not-allowed", "background-color": "lightgray"});
     startButton.addClass("ready");
@@ -49,9 +50,12 @@ $(document).ready(function () {
     
 }
 
+// Start button event listener
   $(startButton).on("click", function () {
+
     if ($(this).hasClass("ready")) {
-      $(box).addClass("free");
+      
+      $(box).addClass("free");      
       $(box).css({"cursor": "pointer", "pointer-events":"initial"});
       $(this).attr("disabled", true);
       $(this).css("cursor", "not-allowed");
@@ -64,34 +68,7 @@ $(document).ready(function () {
     } 
   });
 
-
-function flashBox(box) {
-        
-      $(box).css("background-color", "red");
-        setTimeout(function(){
-            $(box).css("background-color", "white");
-        }, 500);
-
-       $("#info").text("Invalid Move!");
-       setTimeout(function(){
-           $("#info").text("Player Turn")
-       }, 500);      
-     
-}
-
-function checkTurn() {
-      if (turn === 1) {
-
-        playerTurn();
-
-     } else if (turn === 2) {
-
-        cpuTurn();
-
-      };
-  }
-
-
+// Player turn on click event listener
 function playerTurn() {
         
     $(box).off().on("click", function (e) {
@@ -111,12 +88,11 @@ function playerTurn() {
 
         flashBox(this);
         checkTurn();
-    }
-
-  
+    }  
 });
 }
- 
+
+// Randomized cpu turn
 function cpuTurn() {
     
     let randomNumber = Math.floor(Math.random() * 8);
@@ -139,26 +115,30 @@ function cpuTurn() {
     } else { 
         
         checkTurn();
-    }
-    
+    }    
 }
 
-
+// Restart event listener and function
 function restart() {
     
     $(box).empty();
     $(box).css("background-color", "#fafafa");
     $(box).removeClass("cpuMove");
     $(box).removeClass("playerMove");
+
     $(selector).removeClass("active");
     $(selector).attr("aria-pressed", false);
     $(selector).attr("disabled", false);
     $(selector).css({"background-color": "#fafafa", "cursor": "pointer"});
+
     $(startButton).removeClass("ready");
     $(startButton).attr("disabled", true);
     $(startButton).css("cursor", "arrow");
+
     $("#navbar").addClass("show");
+
     $("body").css("background-color", "#75757c");
+
     $("#info").text("Select A Faction And Press Start A New Game");
     
     turn = 0; 
@@ -169,6 +149,21 @@ function restart() {
     $(this).attr("disabled", true);
   });
 
+// Function for changing turns
+  function checkTurn() {
+      if (turn === 1) {
+
+        playerTurn();
+
+     } else if (turn === 2) {
+
+        cpuTurn();
+
+      };
+  }
+
+// Function to check if player or cpu has a winning 
+// combination of boxes
 function checkWin() {
     
     let box0 = $("#0");
@@ -337,6 +332,7 @@ function checkWin() {
     } 
     }
 
+// Functions that checks for draw by comparison to the total available free boxes.
 function checkDraw() {
 
     let freeBoxes = document.querySelectorAll(".free");  
@@ -350,6 +346,21 @@ function checkDraw() {
         win = false;
         gameEnd();
     } 
+}
+
+// Auxiliary functions
+function flashBox(box) {
+        
+      $(box).css("background-color", "red");
+        setTimeout(function(){
+            $(box).css("background-color", "white");
+        }, 500);
+
+       $("#info").text("Invalid Move!");
+       setTimeout(function(){
+           $("#info").text("Player Turn")
+       }, 500);      
+     
 }
 
 function gameEnd() {
