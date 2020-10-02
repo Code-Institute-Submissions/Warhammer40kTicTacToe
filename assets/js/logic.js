@@ -95,7 +95,7 @@ function checkTurn() {
 function playerTurn() {
         
     $(box).off().on("click", function (e) {
-      debugger;   
+         
       if ($(e.target).hasClass("free")) {
       $(this).removeClass("free");
       $(this).addClass("playerMove");
