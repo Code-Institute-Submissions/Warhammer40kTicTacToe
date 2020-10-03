@@ -1,9 +1,8 @@
 ![Warhammer 40k Logo](assets/images/40klogo.png)
+<h2 align="left">Warhammer 40k Tic Tac Toe</h2>
+<h3 align="left">App written and designed by <a href="" target="_blank">Nikolas Kotsikos</a></h2>
 
-<h2 align="left" font="Cormorant SC">Warhammer 40k Tic Tac Toe</h2>
-
-
-Welcome to a new and fresh iteration of the tic tac toe classic game <br>
+Welcome to a new and fresh iteration of the tic tac toe classic game!<br>
 As a passionate and long time fan of the Warhammer 40,000 tabletop universe I was inspired to replace the default X and O icons used in the game traditionally with icons representing the five main factions of the Warhammer 40k universe. <br>
 The user is requested to select one of  the available factions, and then the cpu selects one from the remaining four.<br>
 After pressing Start A New Game, the user needs to click or tap on one of the available boxes in order to act his selected icon.<br>
@@ -54,8 +53,7 @@ The app is responsive to all orientations and screen widths and was designed wit
 
     *   Desktop app view with the Adeptus Astartes faction selected and an invalid move flagged - <a href="https://github.com/NikolasKotsikos/Warhammer40kTicTacToe/blob/master/assets/wireframes/Wireframe-AA.png" target="_blank">View</a>
 
-    *   Desktop app view with the Adeptus Astartes faction selected and an invalid move flagged- <a href="https://github.com/NikolasKotsikos/Warhammer40kTicTacToe/blob/master/assets/wireframes/Wireframe-TAU.png" target="_blank">View</a>
-
+    *   Desktop app view with the T'au Empire faction selected and the user win event- <a href="https://github.com/NikolasKotsikos/Warhammer40kTicTacToe/blob/master/assets/wireframes/Wireframe-TAU.png" target="_blank">View</a>
 
     *   Mobile and tablet view (all sizes)- <a href="https://github.com/NikolasKotsikos/Warhammer40kTicTacToe/blob/master/assets/wireframes/Wireframe-Mobile.png" target="_blank">View</a>
 
@@ -67,6 +65,7 @@ The app is responsive to all orientations and screen widths and was designed wit
 
 *   Five different options for icon and background color.
 *   Randomized cpu turns.
+*   User notifications for invalid moves.
 *   Information text dynamically responds to game events.
 *   Dynamic score keeping.
 *   Responsive on *all* common device sizes.
@@ -93,7 +92,7 @@ The app is responsive to all orientations and screen widths and was designed wit
 7. [GitPod:](https://gitpod.io)
     * GitHut very own IDE was used to write all of the code for this app.
 6. [Photoshop:](https://www.adobe.com/ie/products/photoshop.html)
-    * Photoshop was used to create the app logo and icons transparent background images, as well as for minor styling and size changes to the originals.
+    * Photoshop was used to create the app logo and the transparent background images for the faction icons, as well as for minor styling and size changes to them.
 7. [Lucidchart:](https://lucid.app/users/login#/login)
     * Lucidchart was used to create both the *wireframes* shown above for the front end design as well as the [flowcharts](https://github.com/NikolasKotsikos/Warhammer40kTicTacToe/assets/diagrams/Flowchart-Logic.png) and [diagrams](https://github.com/NikolasKotsikos/Warhammer40kTicTacToe/assets/diagrams/Diagram-VictoryConditions.png) for the app's logic.
 
@@ -101,8 +100,11 @@ The app is responsive to all orientations and screen widths and was designed wit
 
 ### Testing
 
-The [W3C Markup Validator](https://validator.w3.org/) and [W3C CSS Validator](https://validator.w3.org/) Services were used to validate every page of the project to ensure there were no syntax errors in the project.<br>
-The results produced errors in CSS and HTML, due to the implementation of some inventive solutions. They were submitted as received after consultation with Code Institute's tutor support over their overall importance.<br>
+The [W3C Markup Validator](https://validator.w3.org/) and [W3C CSS Validator](https://validator.w3.org/) Services were used to validate the HTML and CSS code respectively<br>
+The Chrome Developer Tools console and JQuery debbuger function were used to debug the JavaScript/JQuery logic code.<br>
+The HTML results produced some errors regarding the placement of h elements within button elements and the duplication of the ids for the .select buttons.<br>
+As those were intentionally as such and the overall result works without issue -after consulting also with the tutor team over their importance- they are submited as they are.<br>
+The CSS code passed with no errors and the JavaScript/JQuery script returns no console errors.<br>
 The results are provided below:
 
 *   [HTML Validation Results](https://github.com/NikolasKotsikos/NikolasKotsikos-OnlineCV/tree/master/testing/html)
@@ -111,11 +113,11 @@ The results are provided below:
 
 #### Testing User Stories from User Experience (UX) Section
 
-*   ##### First Time User Goals
+*   ##### First Time User Goals`
 
     1. I want to easily understand how to start the game.
 
-        *  When starting the app, the user is greeted with a line of text instructing them to select one of the available factions. Those appear in a location easily visible to the user. 
+        *  When starting the app, the user is greeted with a line of text instructing them to select one of the available factions. These appear in a location easily visible to the user on all viewport sizes. 
         *  The user is presented with a visually non-ambiguous navigation bar. From there the user can easily navigate to the individual page they want to visit.
        
     2. I want to know when if I've won.
@@ -165,17 +167,17 @@ The results are provided below:
 *   The website was tested on the latest versions of Google Chrome, Microsoft Edge, Safari and Opera browsers.
 *   The website was viewed on a variety of devices such as Desktop, Laptop, iPhone6, iPhoneX, and iPad Air.
 *   Testing was done to ensure that all functions work correctly and repeatedly.
-*   The website was posted in the [#Peer Code Review Channel](https://code-institute-room.slack.com/archives/CGWQJQKC5/p1601478689064200) in [Slack](https://slack.com/) and shared for community feedback on [Career Karma](https://careerkarma.com/discussions/projects/warhammer-40k-tic-tac-toe-604/), receiving overall positive UX reactions and useful feedback.
-*   Friends and family members were "volunteered" to play test the game, providing invaluable feedback.
+*   The app was posted on the [#Peer Code Review Channel](https://code-institute-room.slack.com/archives/CGWQJQKC5/p1601478689064200) in [Slack](https://slack.com/) and shared for community feedback on [Career Karma](https://careerkarma.com/discussions/projects/warhammer-40k-tic-tac-toe-604/), receiving overall positive UX reactions and useful feedback.
+*   Friends and family members were "volunteered" to play test the game providing invaluable feedback.
 
 #### Squashed Bugs
 
-*   Fixed an issue where player icon would be endlessly replicated on each click.
+*   Fixed an issue where the user icon would be endlessly replicated on each click.
 *   Fixed an issue where the cpu wouldn't take its turn.
 *   Fixed a console error originating from the img element inside the faction select buttons being clickable.
 *   Fixed an issue with the restart button becoming unresponsive after the first use.
 *   Fixed an issue with the player turn being duplicated resulting in an invalid move flag.
-*   Fixed an issue withe the score not being updated past 1. 
+*   Fixed an issue with the score not being updated past 1. 
 
 #### Known Bugs
  
@@ -236,8 +238,7 @@ To clone this project from GitHub:
 #### Acknowledgements
 
 *   My mentor [Aaron Sinnott](https://www.linkedin.com/in/aaronsinnott/) for his structured and focused guidance that pussed me past my coder's blocks!
-*   The amazing tutor team, namely Miklos, Igor and Cormac for helping me squash that pesky last bug! <3
-*   My wife [Lida Dimitriou](https://www.linkedin.com/in/lidadimitriou/) for her immense support and patience!
-*   [Code Institute](https://www.codeinstitute.net) tutors for their helpful feedback.
-*   The [Career Karma](https://www.careerkarma.com) community for their feedback.
+*   The amazing [Code Institute](https://www.codeinstitute.net) tutor team, namely Igor and Miklos for helping me get around some annoying issues, and Cormac for helping me squash that pesky last bug! 
+*   My wife [Lida Dimitriou](https://www.linkedin.com/in/lidadimitriou/) for her immense support and patience! <3 <3 <3
+*   The [Career Karma](https://www.careerkarma.com) community for their support and feedback.
 *   My fellow students on [Slack](https://slack.com/) for their support and fee

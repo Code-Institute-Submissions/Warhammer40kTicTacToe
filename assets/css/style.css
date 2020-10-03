@@ -5,7 +5,6 @@ h3,
 h5,
 h6,
 .newgame,
-#restart,
 .navbar-toggle,
 #score,
 .wins,
@@ -18,7 +17,7 @@ h6,
 
 
 
-h3, #restart {
+h3 {
   font-size: 30px;
 }
 
@@ -245,7 +244,8 @@ table {
 }
 
 .newgame {
-    width: 200px;
+    width: 310px;
+    height: 50px;
     margin: 0 auto;
     background-color: lightgreen;
 }
@@ -262,8 +262,10 @@ table {
 /*--------------------------Restart*/
 #restart {
     width: 310px;
+    height: 55px;
     margin: 0 auto;
-    margin-left: 20px;
+    padding: 0;
+   
 }
 
 
@@ -308,6 +310,10 @@ table {
       width: 200px;
   }
  
+ .newgame {
+     width: 200px;
+ }
+
  .dropdown-faction {
      display: none;
  }

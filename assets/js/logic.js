@@ -139,7 +139,7 @@ function restart() {
 
     $("body").css("background-color", "#75757c");
 
-    $("#info").text("Select A Faction And Press Start A New Game");
+    $("#info").text("Select Your Faction And Then Press Start A New Game");
     
     turn = 0; 
    }

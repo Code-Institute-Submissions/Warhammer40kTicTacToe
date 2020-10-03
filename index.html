@@ -39,7 +39,7 @@
 
     <div class="container-fluid infocontainer text-center">
       <h5 id="info">
-       Select A Faction And Press Start A New Game  
+       Select Your Faction And Then Press Start A New Game  
     </h5>
     </div>
     <!-- /information line -->
@@ -57,28 +57,26 @@
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">Select Your Faction</button>
           
 
-         <div id="navbar" class="navbar-collapse collapse" aria-labelledby="selectButton">
+         <div id="navbar" class="navbar-collapse collapse">
             <button
                 data-color="blue"
                 type="button"
                 id="aa"
                 class="btn select"
                 data-toggle="button"
-                aria-pressed="false"
-                autocomplete="off"
+                aria-pressed="false"               
               >
                 <img src="assets/images/aalogo.png" alt="aa_logo" />
                 <h6 class="fname">Adeptus Astartes</h6>
               </button>
 
             <button
-                data-color="red"
+                data-color="purple"
                 type="button"
                 id="cha"
                 class="btn select"
                 data-toggle="button"
-                aria-pressed="false"
-                autocomplete="off"
+                aria-pressed="false"               
               >
                 <img src="assets/images/chalogo.png" alt="cha_logo" />
                 <h6 class="fname">Chaos</h6>
@@ -90,8 +88,7 @@
                 id="eld"
                 class="btn select"
                 data-toggle="button"
-                aria-pressed="false"
-                autocomplete="off"
+                aria-pressed="false"                
               >
                 <img src="assets/images/eldlogo.png" alt="eld_logo" />
                 <h6 class="fname">Aeldari</h6>
@@ -103,8 +100,7 @@
                 id="nec"
                 class="btn select"
                 data-toggle="button"
-                aria-pressed="false"
-                autocomplete="off"
+                aria-pressed="false"               
               >
                 <img src="assets/images/neclogo.png" alt="nec_logo" />
                 <h6 class="fname">Necrons</h6>
@@ -118,8 +114,7 @@
                 id="tau"
                 class="btn select"
                 data-toggle="button"
-                aria-pressed="false"
-                autocomplete="off"
+                aria-pressed="false"                
               >
                 <img src="assets/images/taulogo.png" alt="tau_logo" />
                 <h6 class="fname">T'au Empire</h6>
@@ -150,8 +145,7 @@
                 id="aa"
                 class="btn btn-primary select"
                 data-toggle="button"
-                aria-pressed="false"
-                autocomplete="off"
+                aria-pressed="false"                
               >
                 <img src="assets/images/aalogo.png" alt="aa_logo" />
                 <h6 class="fname">Adeptus Astartes</h6>
@@ -165,8 +159,7 @@
                 id="cha"
                 class="btn btn-primary select"
                 data-toggle="button"
-                aria-pressed="false"
-                autocomplete="off"
+                aria-pressed="false"                
               >
                 <img src="assets/images/chalogo.png" alt="cha_logo" />
                 <h6 class="fname">Chaos</h6>
@@ -180,8 +173,7 @@
                 id="eld"
                 class="btn btn-primary select"
                 data-toggle="button"
-                aria-pressed="false"
-                autocomplete="off"
+                aria-pressed="false"                
               >
                 <img src="assets/images/eldlogo.png" alt="eld_logo" />
                 <h6 class="fname">Aeldari</h6>
@@ -195,8 +187,7 @@
                 id="nec"
                 class="btn btn-primary select"
                 data-toggle="button"
-                aria-pressed="false"
-                autocomplete="off"
+                aria-pressed="false"                
               >
                 <img src="assets/images/neclogo.png" alt="nec_logo" />
                 <h6 class="fname">Necrons</h6>
@@ -210,8 +201,7 @@
                 id="tau"
                 class="btn btn-primary select"
                 data-toggle="button"
-                aria-pressed="false"
-                autocomplete="off"
+                aria-pressed="false"                
               >
                 <img src="assets/images/taulogo.png" alt="tau_logo" />
                 <h6 class="fname">T'au Empire</h6>
@@ -278,14 +268,13 @@
 
         <!--Restart-->
 
-        <input
+        <button
           type="button"
           id="restart"
           class="btn btn-lg btn-danger btn-block"
-          value="Restart"
+          aria-pressed="false"
           disabled="false"
-        />
-
+        ><h3>Restart</h3></button>
         <!--/restart-->
       </div>
 
@@ -296,7 +285,7 @@
           <p class="wins">
             Wins
           </p>
-          <span id="score" value="0">0</span>
+          <span id="score">0</span>
         </div>
       </div>
     </div>
