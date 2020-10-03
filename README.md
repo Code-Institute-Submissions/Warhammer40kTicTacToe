@@ -1,18 +1,22 @@
-![Warhammer 40k Logo](assets/images/40klogo.png)
+<img src="assets/images/40klogo.png" alt="Warhammer 40k Logo"  />
 <h2 align="left">Warhammer 40k Tic Tac Toe</h2>
 <h3 align="left">App written and designed by <a href="" target="_blank">Nikolas Kotsikos</a></h2>
 
 Welcome to a new and fresh iteration of the tic tac toe classic game!<br>
-As a passionate and long time fan of the Warhammer 40,000 tabletop universe I was inspired to replace the default X and O icons used in the game traditionally with icons representing the five main factions of the Warhammer 40k universe. <br>
+As a passionate and long time fan of the Warhammer 40,000 tabletop universe I was inspired to change the classic tic tac toe formula<br>
+to feature some of its more recognizable factions.<br>
+<br>
 The user is requested to select one of  the available factions, and then the cpu selects one from the remaining four.<br>
 After pressing Start A New Game, the user needs to click or tap on one of the available boxes in order to act his selected icon.<br>
 The cpu follows with a random box selection, defensively coded against it selecting an occupied box on its first attempt.<br>
-After the cpu has completed its turn the players take turns in that order until either one wins or loses, or there is a draw.<br> 
-If the user wins, a win is added to the score counter. The user can then restart the game and select another faction.<br>
-The app keeps track of the total wins in one session of play (the page has not been refreshed from the browser).<br>
-The app is responsive to all orientations and screen widths and was designed with a mobile first approach.<br>
+After the cpu has completed its turn, the players take turns in that order until either one wins or loses, or there is a draw.<br>
+The user is also notified if they attempt an invalid move by clicking on an already occupied box.<br> 
+<br>
+If the user wins, a win is added to the score counter. The user can then restart the game and select another faction in order to play again.<br>
+The app keeps track of the total wins in one session of play (as long as the page has not been refreshed from the browser).<br>
+The app is responsive to all orientations and screen widths above 300px and was designed with a mobile first approach.<br>
  
-[Play the game!](https://nikolaskotsikos.github.io/Warhammer40kTicTacToe/)
+[Try it now!](https://nikolaskotsikos.github.io/Warhammer40kTicTacToe/)
 
 
 
@@ -76,7 +80,9 @@ The app is responsive to all orientations and screen widths and was designed wit
 
 #### Languages Used
 
--   The app was created using [HTML5](https://en.wikipedia.org/wiki/HTML5) styled with custom [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) styles. The logic scripts were written in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
+-   The app was created using [HTML5](https://en.wikipedia.org/wiki/HTML5) styled with custom [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) styles. 
+-   The logic scripts were written in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
+
 #### Frameworks, Libraries & Programs Used
 
 1. [Bootstrap 4.5:](https://getbootstrap.com/)
@@ -84,7 +90,7 @@ The app is responsive to all orientations and screen widths and was designed wit
 2. [JQuery 3.5:](https://jquery.com/)
     * JQuery methods variables and selectors are used with the goal of minimizing the length of the code.
 3. [Google Fonts:](https://fonts.google.com/)
-    * Google fonts were used to import the 'Cormorant SC' font into the style.css file which is used on all text elements of the app.
+    * Google fonts were used to import the [Cormorant SC](https://fonts.google.com/specimen/Cormorant+SC) font into the style.css file which is used on all text elements of the app.
 4. [Git:](https://git-scm.com/)
     * Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
 5. [GitHub:](https://github.com/)
@@ -104,20 +110,22 @@ The [W3C Markup Validator](https://validator.w3.org/) and [W3C CSS Validator](ht
 The Chrome Developer Tools console and JQuery debbuger function were used to debug the JavaScript/JQuery logic code.<br>
 The HTML results produced some errors regarding the placement of h elements within button elements and the duplication of the ids for the .select buttons.<br>
 As those were intentionally as such and the overall result works without issue -after consulting also with the tutor team over their importance- they are submited as they are.<br>
-The CSS code passed with no errors and the JavaScript/JQuery script returns no console errors.<br>
+The CSS code passed with no errors.<br>
+The [JSHint JavaScript Validator](https://jshint.com/) tool was used to validate the JavaScript code, returning no errors. Moreover no errors appear in the Chrome Developer Tools console.<br>
 The results are provided below:
 
-*   [HTML Validation Results](https://github.com/NikolasKotsikos/NikolasKotsikos-OnlineCV/tree/master/testing/html)
-*   [CSS Validation Results](https://github.com/NikolasKotsikos/NikolasKotsikos-OnlineCV/blob/master/testing/CSSResults.png)
-
+*   <a href="https://github.com/NikolasKotsikos/Warhammer40kTicTacToe/blob/master/testing/HTML5Results.png" target="_blank">HTML Validation Results</a>
+*   <a href="https://github.com/NikolasKotsikos/Warhammer40kTicTacToe/blob/master/testing/CSS3Results.png" target="_blank">CSS Validation Results</a>
+*   <a href="https://github.com/NikolasKotsikos/Warhammer40kTicTacToe/blob/master/testing/JSResults.png" target="_blank">JavaScript Validation Results</a>
 
 #### Testing User Stories from User Experience (UX) Section
 
-*   ##### First Time User Goals`
+*   ##### First Time User Goals
 
     1. I want to easily understand how to start the game.
 
-        *  When starting the app, the user is greeted with a line of text instructing them to select one of the available factions. These appear in a location easily visible to the user on all viewport sizes. 
+        *  When starting the app, the user is greeted with a line of text instructing them to select one of the available factions.
+        *  The faction select menu is located in a easily identifiable location for both desktop and mobile users. 
         *  The user is presented with a visually non-ambiguous navigation bar. From there the user can easily navigate to the individual page they want to visit.
        
     2. I want to know when if I've won.
@@ -167,7 +175,7 @@ The results are provided below:
 *   The website was tested on the latest versions of Google Chrome, Microsoft Edge, Safari and Opera browsers.
 *   The website was viewed on a variety of devices such as Desktop, Laptop, iPhone6, iPhoneX, and iPad Air.
 *   Testing was done to ensure that all functions work correctly and repeatedly.
-*   The app was posted on the [#Peer Code Review Channel](https://code-institute-room.slack.com/archives/CGWQJQKC5/p1601478689064200) in [Slack](https://slack.com/) and shared for community feedback on [Career Karma](https://careerkarma.com/discussions/projects/warhammer-40k-tic-tac-toe-604/), receiving overall positive UX reactions and useful feedback.
+*   The app was posted on the *Peer Code Review Channel* in [Slack](https://slack.com/) and shared for community feedback on [Career Karma](https://careerkarma.com/discussions/projects/warhammer-40k-tic-tac-toe-604/), receiving overall positive UX reactions and useful feedback.
 *   Friends and family members were "volunteered" to play test the game providing invaluable feedback.
 
 #### Squashed Bugs
@@ -224,21 +232,22 @@ To clone this project from GitHub:
 
 #### Code
 
-*   General inspiration on how to resolve some of my functions was drawn from [this](https://www.geeksforgeeks.org/create-a-tic-tac-toe-game-using-jquery/) [Geeks for Geeks](https://www.geeksforgeeks.org/) article, with any ideas being modified for the current project.
-*   [This]() 
+*   General inspiration on how to resolve some of my functions was drawn from [this Geeks for Geeks example](https://www.geeksforgeeks.org/create-a-tic-tac-toe-game-using-jquery/) with any ideas being modified for the current project.
+*   [This love2dev.com article](https://love2dev.com/blog/javascript-remove-from-array/#:~:text=You%20can%20remove%20elements%20from,way%20to%20remove%20unwanted%20elements.) by Chris Love about removing elements in JavaScript was used as inspiration in order to formulate my elimination functions.
 
 #### Content
 
-*   All content and code for the website was written by the developer.
+*   All content and code for the website was written by the developer. All names and logos &copy; Games Workshop Limited.
 
 #### Media
 
-*   All image and name copyrights belong to [Games Workshop Limited](https://www.games-workshop.com/en-EU/Home) and were modified by the developer in [Photoshop](https://www.adobe.com/ie/products/photoshop.html).
+*   All image copyrights belong to [Games Workshop Limited](https://www.games-workshop.com/en-EU/Home) and were modified by the developer in [Photoshop](https://www.adobe.com/ie/products/photoshop.html).
 
 #### Acknowledgements
 
 *   My mentor [Aaron Sinnott](https://www.linkedin.com/in/aaronsinnott/) for his structured and focused guidance that pussed me past my coder's blocks!
 *   The amazing [Code Institute](https://www.codeinstitute.net) tutor team, namely Igor and Miklos for helping me get around some annoying issues, and Cormac for helping me squash that pesky last bug! 
-*   My wife [Lida Dimitriou](https://www.linkedin.com/in/lidadimitriou/) for her immense support and patience! <3 <3 <3
+*   My wife [Lida Dimitriou](https://www.linkedin.com/in/lidadimitriou/) for her immense support and love <3!
 *   The [Career Karma](https://www.careerkarma.com) community for their support and feedback.
+*   All friends and family that took the time to test this for me.
 *   My fellow students on [Slack](https://slack.com/) for their support and fee
